@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Settings.Entities
+namespace ORMCompare.Entities
 {
     public class Employee
     {
