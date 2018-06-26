@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ORM.EntityFramework;
+using ORM.EntityFramework.Repositories.Implementations;
 
 namespace ORMCompare
 {
@@ -24,6 +26,9 @@ namespace ORMCompare
         public MainWindow()
         {
             InitializeComponent();
+            EmployeeRepository repo = new EmployeeRepository();
+            var res=repo.GetAllEmployees();
+            int a = 3;
         }
     }
 }

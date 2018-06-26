@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ORMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DepartmentEmployees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DepartmentManagers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Birthday" Type="datetime" Nullable="false" />
+          <Property Name="EmployeeTitleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeTitles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_dbo_DepartmentEmployees_dbo_Departments_DepartmentId">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DepartmentEmployees" Type="Self.DepartmentEmployees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DepartmentEmployees">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DepartmentEmployees_dbo_Employees_EmployeeId">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DepartmentEmployees" Type="Self.DepartmentEmployees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DepartmentEmployees">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DepartmentManagers_dbo_Departments_DepartmentId">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DepartmentManagers" Type="Self.DepartmentManagers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DepartmentManagers">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DepartmentManagers_dbo_Employees_EmployeeId">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DepartmentManagers" Type="Self.DepartmentManagers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DepartmentManagers">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Employees_dbo_EmployeeTitles_EmployeeTitleId">
+          <End Role="EmployeeTitles" Type="Self.EmployeeTitles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeTitles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="EmployeeTitleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ORMModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DepartmentEmployees" EntityType="Self.DepartmentEmployees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DepartmentManagers" EntityType="Self.DepartmentManagers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeTitles" EntityType="Self.EmployeeTitles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_DepartmentEmployees_dbo_Departments_DepartmentId" Association="Self.FK_dbo_DepartmentEmployees_dbo_Departments_DepartmentId">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="DepartmentEmployees" EntitySet="DepartmentEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DepartmentEmployees_dbo_Employees_EmployeeId" Association="Self.FK_dbo_DepartmentEmployees_dbo_Employees_EmployeeId">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="DepartmentEmployees" EntitySet="DepartmentEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DepartmentManagers_dbo_Departments_DepartmentId" Association="Self.FK_dbo_DepartmentManagers_dbo_Departments_DepartmentId">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="DepartmentManagers" EntitySet="DepartmentManagers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DepartmentManagers_dbo_Employees_EmployeeId" Association="Self.FK_dbo_DepartmentManagers_dbo_Employees_EmployeeId">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="DepartmentManagers" EntitySet="DepartmentManagers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Employees_dbo_EmployeeTitles_EmployeeTitleId" Association="Self.FK_dbo_Employees_dbo_EmployeeTitles_EmployeeTitleId">
+            <End Role="EmployeeTitles" EntitySet="EmployeeTitles" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ORMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DepartmentEmployees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Departments" Relationship="Self.FK_dbo_DepartmentEmployees_dbo_Departments_DepartmentId" FromRole="DepartmentEmployees" ToRole="Departments" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_dbo_DepartmentEmployees_dbo_Employees_EmployeeId" FromRole="DepartmentEmployees" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="DepartmentManagers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Departments" Relationship="Self.FK_dbo_DepartmentManagers_dbo_Departments_DepartmentId" FromRole="DepartmentManagers" ToRole="Departments" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_dbo_DepartmentManagers_dbo_Employees_EmployeeId" FromRole="DepartmentManagers" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DepartmentEmployees" Relationship="Self.FK_dbo_DepartmentEmployees_dbo_Departments_DepartmentId" FromRole="Departments" ToRole="DepartmentEmployees" />
+          <NavigationProperty Name="DepartmentManagers" Relationship="Self.FK_dbo_DepartmentManagers_dbo_Departments_DepartmentId" FromRole="Departments" ToRole="DepartmentManagers" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EmployeeTitleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DepartmentEmployees" Relationship="Self.FK_dbo_DepartmentEmployees_dbo_Employees_EmployeeId" FromRole="Employees" ToRole="DepartmentEmployees" />
+          <NavigationProperty Name="DepartmentManagers" Relationship="Self.FK_dbo_DepartmentManagers_dbo_Employees_EmployeeId" FromRole="Employees" ToRole="DepartmentManagers" />
+          <NavigationProperty Name="EmployeeTitles" Relationship="Self.FK_dbo_Employees_dbo_EmployeeTitles_EmployeeTitleId" FromRole="Employees" ToRole="EmployeeTitles" />
+        </EntityType>
+        <EntityType Name="EmployeeTitles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_dbo_Employees_dbo_EmployeeTitles_EmployeeTitleId" FromRole="EmployeeTitles" ToRole="Employees" />
+        </EntityType>
+        <Association Name="FK_dbo_DepartmentEmployees_dbo_Departments_DepartmentId">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DepartmentEmployees" Type="Self.DepartmentEmployees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DepartmentEmployees">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DepartmentEmployees_dbo_Employees_EmployeeId">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DepartmentEmployees" Type="Self.DepartmentEmployees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DepartmentEmployees">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DepartmentManagers_dbo_Departments_DepartmentId">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DepartmentManagers" Type="Self.DepartmentManagers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DepartmentManagers">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DepartmentManagers_dbo_Employees_EmployeeId">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DepartmentManagers" Type="Self.DepartmentManagers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DepartmentManagers">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Employees_dbo_EmployeeTitles_EmployeeTitleId">
+          <End Role="EmployeeTitles" Type="Self.EmployeeTitles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeTitles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="EmployeeTitleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ORMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="DepartmentEmployees" EntityType="Self.DepartmentEmployees" />
+          <EntitySet Name="DepartmentManagers" EntityType="Self.DepartmentManagers" />
+          <EntitySet Name="Departments" EntityType="Self.Departments" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" />
+          <EntitySet Name="EmployeeTitles" EntityType="Self.EmployeeTitles" />
+          <AssociationSet Name="FK_dbo_DepartmentEmployees_dbo_Departments_DepartmentId" Association="Self.FK_dbo_DepartmentEmployees_dbo_Departments_DepartmentId">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="DepartmentEmployees" EntitySet="DepartmentEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DepartmentEmployees_dbo_Employees_EmployeeId" Association="Self.FK_dbo_DepartmentEmployees_dbo_Employees_EmployeeId">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="DepartmentEmployees" EntitySet="DepartmentEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DepartmentManagers_dbo_Departments_DepartmentId" Association="Self.FK_dbo_DepartmentManagers_dbo_Departments_DepartmentId">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="DepartmentManagers" EntitySet="DepartmentManagers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DepartmentManagers_dbo_Employees_EmployeeId" Association="Self.FK_dbo_DepartmentManagers_dbo_Employees_EmployeeId">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="DepartmentManagers" EntitySet="DepartmentManagers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Employees_dbo_EmployeeTitles_EmployeeTitleId" Association="Self.FK_dbo_Employees_dbo_EmployeeTitles_EmployeeTitleId">
+            <End Role="EmployeeTitles" EntitySet="EmployeeTitles" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ORMModelStoreContainer" CdmEntityContainer="ORMEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="ORMModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DepartmentEmployees">
+            <EntityTypeMapping TypeName="ORMModel.DepartmentEmployees">
+              <MappingFragment StoreEntitySet="DepartmentEmployees">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DepartmentManagers">
+            <EntityTypeMapping TypeName="ORMModel.DepartmentManagers">
+              <MappingFragment StoreEntitySet="DepartmentManagers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="ORMModel.Departments">
+              <MappingFragment StoreEntitySet="Departments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="ORMModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="EmployeeTitleId" ColumnName="EmployeeTitleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeTitles">
+            <EntityTypeMapping TypeName="ORMModel.EmployeeTitles">
+              <MappingFragment StoreEntitySet="EmployeeTitles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

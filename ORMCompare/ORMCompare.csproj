@@ -116,5 +116,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ORM.EntityFramework\ORM.EntityFramework.csproj">
+      <Project>{dfe37913-6d5b-4227-99f0-4f8f646204d6}</Project>
+      <Name>ORM.EntityFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
