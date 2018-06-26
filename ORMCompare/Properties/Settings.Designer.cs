@@ -25,7 +25,7 @@ namespace ORMCompare.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("DESKTOP-2F2DTR9\\SQLEXPRESS")]
         public string IP {
             get {
                 return ((string)(this["IP"]));
@@ -61,7 +61,7 @@ namespace ORMCompare.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ORM")]
         public string DatabaseName {
             get {
                 return ((string)(this["DatabaseName"]));

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="IP" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">DESKTOP-2F2DTR9\SQLEXPRESS</Value>
     </Setting>
     <Setting Name="Port" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
@@ -15,7 +15,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="DatabaseName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">ORM</Value>
     </Setting>
   </Settings>
 </SettingsFile>
