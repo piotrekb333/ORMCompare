@@ -70,11 +70,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Database\Context\ORMContext.cs" />
-    <Compile Include="Database\Entities\Department.cs" />
-    <Compile Include="Database\Entities\DepartmentEmployee.cs" />
-    <Compile Include="Database\Entities\DepartmentManager.cs" />
-    <Compile Include="Database\Entities\Employee.cs" />
-    <Compile Include="Database\Entities\EmployeeTitle.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -120,6 +115,10 @@
     <ProjectReference Include="..\ORM.EntityFramework\ORM.EntityFramework.csproj">
       <Project>{dfe37913-6d5b-4227-99f0-4f8f646204d6}</Project>
       <Name>ORM.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORMSettings\ORMSettings.csproj">
+      <Project>{ea8df939-9578-4e85-8944-c1f313126b3a}</Project>
+      <Name>ORMSettings</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

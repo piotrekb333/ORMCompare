@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ORMCompare.Entities
+namespace ORMSettings.Models
 {
-    public class DepartmentManager
+    public class DepartmentEmployee
     {
         public int Id { get; set; }
         public int EmployeeId { get; set; }

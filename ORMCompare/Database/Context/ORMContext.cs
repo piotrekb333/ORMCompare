@@ -1,5 +1,6 @@
 ﻿
-using ORMCompare.Entities;
+
+using ORMSettings.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

@@ -11,19 +11,19 @@ namespace ORMCompare
     {
         public static string GetConnectionString()
         {
-            string source = Settings.Default.IP;
+            string source = ORMCompare.Properties.Settings.Default.IP;
             string user = "";
             string security = "True";
-            if (!string.IsNullOrEmpty(Settings.Default.Port))
+            if (!string.IsNullOrEmpty(ORMCompare.Properties.Settings.Default.Port))
             {
-                source += "," + Settings.Default.Port;
+                source += "," + ORMCompare.Properties.Settings.Default.Port;
             }
-            if (!string.IsNullOrEmpty(Settings.Default.Login))
+            if (!string.IsNullOrEmpty(ORMCompare.Properties.Settings.Default.Login))
             {
-                user = $"User Id={Settings.Default.Login};Password={Settings.Default.Password};";
+                user = $"User Id={ORMCompare.Properties.Settings.Default.Login};Password={ORMCompare.Properties.Settings.Default.Password};";
                 security = "False";
             }
-            return $"Data Source={source};Initial Catalog={Settings.Default.DatabaseName};Integrated Security={security};{user}TrustServerCertificate=False;MultipleActiveResultSets=True;";
+            return $"Data Source={source};Initial Catalog={ORMCompare.Properties.Settings.Default.DatabaseName};Integrated Security={security};{user}TrustServerCertificate=False;MultipleActiveResultSets=True;";
             
         }
     }
