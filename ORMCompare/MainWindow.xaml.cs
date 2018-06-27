@@ -26,7 +26,7 @@ namespace ORMCompare
         public MainWindow()
         {
             InitializeComponent();
-            EmployeeRepository repo = new EmployeeRepository();
+            EntityFrameworkRepository repo = new EntityFrameworkRepository();
             var res=repo.GetAllEmployees();
             int a = 3;
         }
