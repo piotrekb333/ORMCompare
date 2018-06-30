@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ORM.EntityFramework.Repositories.Implementations
 {
-    public class EntityFrameworkRepository : ORMSettings.Interfaces.ORMDatabaseMethods
+    public class EntityFrameworkRepository : ORMSettings.Interfaces.IORMDatabaseMethods
     {
         private readonly ORMEntities context;
         public EntityFrameworkRepository()

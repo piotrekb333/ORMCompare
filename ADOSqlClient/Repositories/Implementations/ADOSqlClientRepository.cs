@@ -8,7 +8,7 @@ using ORMSettings.Models;
 
 namespace ADOSqlClient.Repositories.Implementations
 {
-    public class ADOSqlClientRepository : ORMSettings.Interfaces.ORMDatabaseMethods
+    public class ADOSqlClientRepository : ORMSettings.Interfaces.IORMDatabaseMethods
     {
         public bool InsertEmployee(Employee model)
         {

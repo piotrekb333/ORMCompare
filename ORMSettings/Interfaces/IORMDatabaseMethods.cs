@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ORMSettings.Interfaces
 {
-    public interface ORMDatabaseMethods
+    public interface IORMDatabaseMethods
     {
         bool InsertEmployee(Employee model);
     }

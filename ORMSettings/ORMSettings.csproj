@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\ORMDatabaseMethods.cs" />
+    <Compile Include="Interfaces\IORMDatabaseMethods.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\DepartmentEmployee.cs" />
     <Compile Include="Models\DepartmentManager.cs" />

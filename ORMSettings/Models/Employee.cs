@@ -10,7 +10,7 @@ namespace ORMSettings.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime Birthday { get; set; }
-        public int EmployeeTitleId { get; set; }
+        public int? EmployeeTitleId { get; set; }
 
         public virtual ICollection<DepartmentEmployee> DepartmentEmployees { get; set; }
 

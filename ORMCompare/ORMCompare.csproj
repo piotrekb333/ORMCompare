@@ -61,6 +61,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Migrations\201806292043038_changedCol.cs" />
+    <Compile Include="Migrations\201806292043038_changedCol.Designer.cs">
+      <DependentUpon>201806292043038_changedCol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\TestTimeMethods.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -98,6 +103,9 @@
     <EmbeddedResource Include="Migrations\201806251802436_init.resx">
       <DependentUpon>201806251802436_init.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806292043038_changedCol.resx">
+      <DependentUpon>201806292043038_changedCol.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -120,6 +128,9 @@
       <Project>{ea8df939-9578-4e85-8944-c1f313126b3a}</Project>
       <Name>ORMSettings</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
