@@ -15,6 +15,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ORM.EntityFramework;
 using ORM.EntityFramework.Repositories.Implementations;
+using ORMCompare.Services;
+using ORMCompare.Views;
+using ORMCompare.ApplicationModels;
 
 namespace ORMCompare
 {
@@ -26,9 +29,14 @@ namespace ORMCompare
         public MainWindow()
         {
             InitializeComponent();
-            EntityFrameworkRepository repo = new EntityFrameworkRepository();
-            var res=repo.GetAllEmployees();
-            int a = 3;
+            TestTimeMethods s = new TestTimeMethods(EnumsClass.ORMTool.EntityFramework);
+            var dd = s.EntityFrameworkInsertEmployee();
+            TimeChartModel mod = new TimeChartModel();
+            mod.ChartData = new List<TimeModel>();
+            mod.ChartData.Add(new TimeModel { Name = "Entity", Time = dd });
+            TimeChart ch = new TimeChart(mod);
+            ch.ShowDialog();
+            
         }
     }
 }
