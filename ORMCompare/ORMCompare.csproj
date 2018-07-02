@@ -61,11 +61,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="HelpersClasses\EnumsClass.cs" />
     <Compile Include="Migrations\201806292043038_changedCol.cs" />
     <Compile Include="Migrations\201806292043038_changedCol.Designer.cs">
       <DependentUpon>201806292043038_changedCol.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\TestTimeMethods.cs" />
+    <Compile Include="Views\Chart.xaml.cs">
+      <DependentUpon>Chart.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -80,6 +84,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Chart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Migrations\201806251802436_init.cs" />
@@ -120,6 +128,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ADOSqlClient\ADOSqlClient.csproj">
+      <Project>{1E085230-BAA3-4343-97B9-3B078ADF26E2}</Project>
+      <Name>ADOSqlClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ORM.EntityFramework\ORM.EntityFramework.csproj">
       <Project>{dfe37913-6d5b-4227-99f0-4f8f646204d6}</Project>
       <Name>ORM.EntityFramework</Name>
@@ -129,8 +141,6 @@
       <Name>ORMSettings</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

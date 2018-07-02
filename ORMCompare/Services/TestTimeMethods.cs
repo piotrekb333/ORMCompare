@@ -1,20 +1,29 @@
-﻿using ORM.EntityFramework.Repositories.Implementations;
+﻿using ADOSqlClient.Repositories.Implementations;
+using ORM.EntityFramework.Repositories.Implementations;
+using ORMCompare.EnumsClass;
 using ORMSettings.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace ORMCompare.Services
 {
     public class TestTimeMethods
     {
-
+        IORMDatabaseMethods repo;
+        public TestTimeMethods(ORMTool tool)
+        {
+            switch (tool)
+            {
+                case ORMTool.EntityFramework:
+                    repo = new EntityFrameworkRepository();
+                    break;
+                case ORMTool.ADOSqlClient:
+                    repo = new ADOSqlClientRepository();
+                    break;
+            }
+                 
+        }    
         public long EntityFrameworkInsertEmployee()
         {
             var watch = System.Diagnostics.Stopwatch.StartNew();
-            IORMDatabaseMethods repo = new EntityFrameworkRepository();
             repo.InsertEmployee(new ORMSettings.Models.Employee
             {
                 Birthday = DateTime.Now,
