@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ORM.NHibernate", "ORM.NHibernate\ORM.NHibernate.csproj", "{4D30B256-B0F4-4611-826E-910F1747DF11}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ORM.Drapper", "ORM.Drapper\ORM.Drapper.csproj", "{B1BB6E58-873B-45F7-B07F-9CD45C0F9A55}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ORM.Artistan", "ORM.Artistan\ORM.Artistan.csproj", "{9F6DC499-0B1A-4294-85E1-166D7767BB20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ORMCompare", "ORMCompare\ORMCompare.csproj", "{230DE4DB-D1E7-4E1C-8D71-70CC02253E75}"
@@ -17,20 +13,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ORMSettings", "ORMSettings\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADOSqlClient", "ADOSqlClient\ADOSqlClient.csproj", "{1E085230-BAA3-4343-97B9-3B078ADF26E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ORM.NHibernate", "ORM.NHibernate\ORM.NHibernate.csproj", "{ABC7A472-D44C-498B-B0FF-BC34881938C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ORM.Drapper", "ORM.Drapper\ORM.Drapper.csproj", "{239C340E-9BDF-4523-A386-06BE4B236DEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4D30B256-B0F4-4611-826E-910F1747DF11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D30B256-B0F4-4611-826E-910F1747DF11}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D30B256-B0F4-4611-826E-910F1747DF11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D30B256-B0F4-4611-826E-910F1747DF11}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B1BB6E58-873B-45F7-B07F-9CD45C0F9A55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B1BB6E58-873B-45F7-B07F-9CD45C0F9A55}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B1BB6E58-873B-45F7-B07F-9CD45C0F9A55}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B1BB6E58-873B-45F7-B07F-9CD45C0F9A55}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9F6DC499-0B1A-4294-85E1-166D7767BB20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9F6DC499-0B1A-4294-85E1-166D7767BB20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F6DC499-0B1A-4294-85E1-166D7767BB20}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +43,14 @@ Global
 		{1E085230-BAA3-4343-97B9-3B078ADF26E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E085230-BAA3-4343-97B9-3B078ADF26E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E085230-BAA3-4343-97B9-3B078ADF26E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABC7A472-D44C-498B-B0FF-BC34881938C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABC7A472-D44C-498B-B0FF-BC34881938C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABC7A472-D44C-498B-B0FF-BC34881938C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABC7A472-D44C-498B-B0FF-BC34881938C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{239C340E-9BDF-4523-A386-06BE4B236DEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{239C340E-9BDF-4523-A386-06BE4B236DEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{239C340E-9BDF-4523-A386-06BE4B236DEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{239C340E-9BDF-4523-A386-06BE4B236DEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

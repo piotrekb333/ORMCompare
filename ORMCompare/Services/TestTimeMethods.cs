@@ -1,5 +1,7 @@
 ﻿using ADOSqlClient.Repositories.Implementations;
+using ORM.Drapper.Repositories.Implementations;
 using ORM.EntityFramework.Repositories.Implementations;
+using ORM.NHibernate.Repositories.Implementations;
 using ORMCompare.EnumsClass;
 using ORMSettings.Interfaces;
 using System;
@@ -17,6 +19,12 @@ namespace ORMCompare.Services
                     break;
                 case ORMTool.ADOSqlClient:
                     repo = new ADOSqlClientRepository();
+                    break;
+                case ORMTool.NHibernate:
+                    repo = new NHibernateRepository();
+                    break;
+                case ORMTool.Drapper:
+                    repo = new DrapperRepository();
                     break;
             }
                  
