@@ -29,7 +29,7 @@ namespace ORMCompare
         public MainWindow()
         {
             InitializeComponent();
-            TestTimeMethods s = new TestTimeMethods(EnumsClass.ORMTool.Drapper);
+            TestTimeMethods s = new TestTimeMethods(EnumsClass.ORMTool.EntityFramework);
             var dd = s.EntityFrameworkInsertEmployee();
             TimeChartModel mod = new TimeChartModel();
             mod.ChartData = new List<TimeModel>();

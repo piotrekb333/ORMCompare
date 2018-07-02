@@ -14,8 +14,9 @@ namespace ADOSqlClient.Repositories.Implementations
         {
             try
             {
-                string connectionString = "Insert into Employees (FirstName,LastName,Birthday,EmployeeTitleId) values (@0,@1,@2,@3)";
-                string queryString = "";
+                string connectionString = "Data Source=DESKTOP-2F2DTR9\\SQLEXPRESS;Initial Catalog=ORM;Integrated Security=true;TrustServerCertificate=False;MultipleActiveResultSets=True;";
+                string queryString = "Insert into Employees (FirstName,LastName,Birthday,EmployeeTitleId) values (@0,@1,@2,@3)";
+
                 using (SqlConnection connection =
                     new SqlConnection(connectionString))
                 {
