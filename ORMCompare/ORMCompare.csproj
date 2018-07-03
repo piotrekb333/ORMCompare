@@ -178,5 +178,17 @@
   <ItemGroup>
     <None Include="Resources\SP_DeleteAllEmployeeTitles.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SP_DeleteAllEmployees.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SP_DeleteAllDepartments.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SP_DeleteAllDepartmentManagers.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SP_DeleteAllDepartmentEmployees.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

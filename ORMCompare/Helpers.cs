@@ -10,6 +10,11 @@ namespace ORMCompare
     public class Helpers
     {
         public static string SPDeleteAllEmployeeTitle = "SP_DeleteAllEmployeeTitles";
+        public static string SPDeleteAllDepartmentEmployees = "SP_DeleteAllDepartmentEmployees";
+        public static string SPDeleteAllDepartmentManagers = "SP_DeleteAllDepartmentManagers";
+        public static string SPDeleteAllDepartments = "SP_DeleteAllDepartments";
+        public static string SPDeleteAllEmployees = "SP_DeleteAllEmployees";
+
         public static string GetConnectionString()
         {
             string source = ORMCompare.Properties.Settings.Default.IP;

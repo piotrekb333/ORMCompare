@@ -61,6 +61,70 @@ namespace ORMCompare.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string SP_DeleteAllDepartmentEmployees {
+            get {
+                return ResourceManager.GetString("SP_DeleteAllDepartmentEmployees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string SP_DeleteAllDepartmentManagers {
+            get {
+                return ResourceManager.GetString("SP_DeleteAllDepartmentManagers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE PROCEDURE SP_DeleteAllDepartments
+        ///AS
+        ///BEGIN
+        ///	-- SET NOCOUNT ON added to prevent extra result sets from
+        ///	-- interfering with SELECT statements.
+        ///	SET NOCOUNT ON;
+        ///
+        ///    -- Insert statements for procedure here
+        ///	BEGIN TRANSACTION;
+        ///	Delete from DepartmentEmployees
+        ///	Delete from Departments
+        ///	COMMIT TRANSACTION
+        ///END
+        ///GO
+        ///.
+        /// </summary>
+        internal static string SP_DeleteAllDepartments {
+            get {
+                return ResourceManager.GetString("SP_DeleteAllDepartments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE PROCEDURE SP_DeleteAllEmployees
+        ///
+        ///AS
+        ///BEGIN
+        ///	-- SET NOCOUNT ON added to prevent extra result sets from
+        ///	-- interfering with SELECT statements.
+        ///	SET NOCOUNT ON;
+        ///
+        ///    -- Insert statements for procedure here
+        ///	BEGIN TRANSACTION;
+        ///	Delete from Employees
+        ///	COMMIT TRANSACTION
+        ///END
+        ///GO
+        ///.
+        /// </summary>
+        internal static string SP_DeleteAllEmployees {
+            get {
+                return ResourceManager.GetString("SP_DeleteAllEmployees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CREATE PROCEDURE SP_DeleteAllEmployeeTitles 
         ///
         ///AS
