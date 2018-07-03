@@ -15,5 +15,8 @@ namespace ORMCompare.Services.Interfaces
         void Update(T entity);
         void Delete(T entity);
         IQueryable<T> Table { get; }
+        void DeleteLast();
+        long NumberOfRecords();
+
     }
 }

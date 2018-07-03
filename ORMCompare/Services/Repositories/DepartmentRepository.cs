@@ -40,5 +40,14 @@ namespace ORMCompare.Services.Repositories
         {
             throw new NotImplementedException();
         }
+        public void DeleteLast()
+        {
+            departmentRepository.DeleteLast();
+        }
+
+        public long NumberOfRecords()
+        {
+            return departmentRepository.NumberOfRecords();
+        }
     }
 }
