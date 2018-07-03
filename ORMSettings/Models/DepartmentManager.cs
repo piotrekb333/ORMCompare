@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ORMSettings.Inftrastructure;
+
 
 namespace ORMSettings.Models
 {
-    public class DepartmentManager
+    public class DepartmentManager : BaseEntity
     {
         public int Id { get; set; }
         public int EmployeeId { get; set; }

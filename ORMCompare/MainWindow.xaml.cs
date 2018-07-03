@@ -18,6 +18,8 @@ using ORM.EntityFramework.Repositories.Implementations;
 using ORMCompare.Services;
 using ORMCompare.Views;
 using ORMCompare.ApplicationModels;
+using ORMCompare.Services.Interfaces;
+using ORMCompare.Services.Repositories;
 
 namespace ORMCompare
 {
@@ -29,6 +31,7 @@ namespace ORMCompare
         public MainWindow()
         {
             InitializeComponent();
+            /*
             TestTimeMethods s = new TestTimeMethods(EnumsClass.ORMTool.PetaPoco);
             var dd = s.EntityFrameworkInsertEmployee();
             TimeChartModel mod = new TimeChartModel();
@@ -36,7 +39,19 @@ namespace ORMCompare
             mod.ChartData.Add(new TimeModel { Name = "Entity", Time = dd });
             TimeChart ch = new TimeChart(mod);
             ch.ShowDialog();
-            
+            */
+            IEmployeeRepository dd = new EmployeeRepository();
+            dd.Insert(new ORMSettings.Models.Employee
+            {
+                Birthday = DateTime.Now,
+                FirstName = "df",
+                LastName = "df"
+            });
+        }
+
+        private void BtnInsertRecords_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
