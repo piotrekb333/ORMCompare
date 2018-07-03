@@ -36,8 +36,8 @@
                         <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Content="Employees"/>
                         <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Content="Departments"/>
                         <Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" Content="Employee Titles"/>
-                        <Label Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" Content="DepartmentEmployees"/>
-                        <Label Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" Content="DepartmentManagers"/>
+                        <Label Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" Content="Department Employees"/>
+                        <Label Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" Content="Department Managers"/>
                         <TextBox Grid.Column="1" Grid.Row="0" Name="txtInsertEmployees"/>
                         <TextBox Grid.Column="1" Grid.Row="1" Name="txtInsertDepartments"/>
                         <TextBox Grid.Column="1" Grid.Row="2" Name="txtInsertEmployeeTitles"/>

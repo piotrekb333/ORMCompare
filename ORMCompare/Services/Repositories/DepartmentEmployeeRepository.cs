@@ -48,5 +48,9 @@ namespace ORMCompare.Services.Repositories
         {
             return departmentEmployeeRepository.NumberOfRecords();
         }
+        public void DeleteAll(string procedureName)
+        {
+             departmentEmployeeRepository.DeleteAll(procedureName);
+        }
     }
 }

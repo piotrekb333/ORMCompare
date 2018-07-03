@@ -9,6 +9,7 @@ namespace ORMCompare
 {
     public class Helpers
     {
+        public static string SPDeleteAllEmployeeTitle = "SP_DeleteAllEmployeeTitles";
         public static string GetConnectionString()
         {
             string source = ORMCompare.Properties.Settings.Default.IP;

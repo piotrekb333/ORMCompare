@@ -20,6 +20,7 @@ using ORMCompare.Views;
 using ORMCompare.ApplicationModels;
 using ORMCompare.Services.Interfaces;
 using ORMCompare.Services.Repositories;
+using ORMCompare.Services.ManageDatabase;
 
 namespace ORMCompare
 {
@@ -47,6 +48,10 @@ namespace ORMCompare
                 FirstName = "df",
                 LastName = "df"
             });
+
+            ManageDatabaseService d = new ManageDatabaseService();
+            d.DeleteAllEmployeeTitles();
+            //d.InsertRandomEmployeeTitle(100000);
         }
 
         private void BtnInsertRecords_Click(object sender, RoutedEventArgs e)

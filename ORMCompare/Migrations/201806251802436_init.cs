@@ -66,9 +66,10 @@ namespace ORMCompare.Migrations
                         Title = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
-            
+            this.Sql(Properties.Resources.SP_DeleteAllEmployeeTitles);
+
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.Employees", "EmployeeTitleId", "dbo.EmployeeTitles");

@@ -17,6 +17,6 @@ namespace ORMCompare.Services.Interfaces
         IQueryable<T> Table { get; }
         void DeleteLast();
         long NumberOfRecords();
-
+        void DeleteAll(string procedureName);
     }
 }
