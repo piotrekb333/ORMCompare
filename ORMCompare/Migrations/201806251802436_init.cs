@@ -67,6 +67,10 @@ namespace ORMCompare.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             this.Sql(Properties.Resources.SP_DeleteAllEmployeeTitles);
+            this.Sql(Properties.Resources.SP_DeleteAllDepartmentEmployees);
+            this.Sql(Properties.Resources.SP_DeleteAllDepartmentManagers);
+            this.Sql(Properties.Resources.SP_DeleteAllDepartments);
+            this.Sql(Properties.Resources.SP_DeleteAllEmployees);
 
         }
 
