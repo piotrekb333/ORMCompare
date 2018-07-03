@@ -152,6 +152,10 @@
       <Project>{ABC7A472-D44C-498B-B0FF-BC34881938C0}</Project>
       <Name>ORM.NHibernate</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ORM.PetaPoco\ORM.PetaPoco.csproj">
+      <Project>{8BC6C92D-E882-4F86-A4E8-18C3B788E09B}</Project>
+      <Name>ORM.PetaPoco</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ORMSettings\ORMSettings.csproj">
       <Project>{ea8df939-9578-4e85-8944-c1f313126b3a}</Project>
       <Name>ORMSettings</Name>

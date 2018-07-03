@@ -2,6 +2,7 @@
 using ORM.Drapper.Repositories.Implementations;
 using ORM.EntityFramework.Repositories.Implementations;
 using ORM.NHibernate.Repositories.Implementations;
+using ORM.PetaPoco.Repositories.Implementations;
 using ORMCompare.EnumsClass;
 using ORMSettings.Interfaces;
 using System;
@@ -25,6 +26,9 @@ namespace ORMCompare.Services
                     break;
                 case ORMTool.Drapper:
                     repo = new DrapperRepository();
+                    break;
+                case ORMTool.PetaPoco:
+                    repo = new PetaPocoRepository();
                     break;
             }
                  
