@@ -29,7 +29,7 @@ namespace ORMCompare.Services
             }
                  
         }    
-        public long EntityFrameworkInsertEmployee()
+        public long InsertEmployeeTest()
         {
             var watch = System.Diagnostics.Stopwatch.StartNew();
             repo.InsertEmployee(new ORMSettings.Models.Employee
@@ -38,6 +38,15 @@ namespace ORMCompare.Services
                 FirstName = "test",
                 LastName = "test"
             });
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            return elapsedMs;
+        }
+
+        public long GetAllEmployeesTest()
+        {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            repo.GetAllEmployee();
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
             return elapsedMs;

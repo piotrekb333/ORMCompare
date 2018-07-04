@@ -13,14 +13,14 @@ namespace ORM.EntityFramework.Database
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ORMEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public ORMEntities()
-            : base("name=ORMEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
-        public ORMEntities(string connectionString)
-        : base(connectionString)
+        public Entities(string connection)
+        : base(connection)
         {
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

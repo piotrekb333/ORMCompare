@@ -10,5 +10,6 @@ namespace ORMSettings.Interfaces
     public interface IORMDatabaseMethods
     {
         bool InsertEmployee(Employee model);
+        IEnumerable<Employee> GetAllEmployee();
     }
 }

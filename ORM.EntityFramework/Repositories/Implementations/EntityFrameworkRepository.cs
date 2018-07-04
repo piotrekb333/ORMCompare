@@ -11,15 +11,22 @@ namespace ORM.EntityFramework.Repositories.Implementations
 {
     public class EntityFrameworkRepository : ORMSettings.Interfaces.IORMDatabaseMethods
     {
-        private readonly ORMEntities context;
+        private readonly Entities context;
         public EntityFrameworkRepository()
         {
-            context = new ORMEntities(@"metadata=res://*/Database.ORMDatabase.csdl|res://*/Database.ORMDatabase.ssdl|res://*/Database.ORMDatabase.msl;provider=System.Data.SqlClient;provider connection string="";data source=DESKTOP-2F2DTR9\SQLEXPRESS;initial catalog=ORM;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"";");
+            context = new Entities(@"metadata=res://*/Database.ORMEntities.csdl|res://*/Database.ORMEntities.ssdl|res://*/Database.ORMEntities.msl;provider=System.Data.SqlClient;provider connection string="";data source=DESKTOP-2F2DTR9\SQLEXPRESS;initial catalog=ORM;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"";");
         }
 
-        public IEnumerable<Employees> GetAllEmployees()
+        public IEnumerable<Employee> GetAllEmployee()
         {
-            return context.Employees.ToList();
+            var result= context.Employees.ToList();
+            var mapConf = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<ORM.EntityFramework.Database.Employees, ORMSettings.Models.Employee>();
+            });
+            IMapper mapper = mapConf.CreateMapper();
+            var output = mapper.Map<List<ORM.EntityFramework.Database.Employees>, IEnumerable<ORMSettings.Models.Employee>>(result);
+            return output;
         }
 
         public bool InsertEmployee(ORMSettings.Models.Employee model)

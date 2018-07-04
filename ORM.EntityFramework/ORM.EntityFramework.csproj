@@ -56,49 +56,49 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\C__MigrationHistory.cs">
-      <DependentUpon>ORMDatabase.tt</DependentUpon>
+      <DependentUpon>ORMEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\DepartmentEmployees.cs">
-      <DependentUpon>ORMDatabase.tt</DependentUpon>
+      <DependentUpon>ORMEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\DepartmentManagers.cs">
-      <DependentUpon>ORMDatabase.tt</DependentUpon>
+      <DependentUpon>ORMEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Departments.cs">
-      <DependentUpon>ORMDatabase.tt</DependentUpon>
+      <DependentUpon>ORMEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Employees.cs">
-      <DependentUpon>ORMDatabase.tt</DependentUpon>
+      <DependentUpon>ORMEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\EmployeeTitles.cs">
-      <DependentUpon>ORMDatabase.tt</DependentUpon>
+      <DependentUpon>ORMEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\ORMDatabase.Context.cs">
+    <Compile Include="Database\ORMEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ORMDatabase.Context.tt</DependentUpon>
+      <DependentUpon>ORMEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\ORMDatabase.cs">
+    <Compile Include="Database\ORMEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ORMDatabase.tt</DependentUpon>
+      <DependentUpon>ORMEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\ORMDatabase.Designer.cs">
+    <Compile Include="Database\ORMEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ORMDatabase.edmx</DependentUpon>
+      <DependentUpon>ORMEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Implementations\EntityFrameworkRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Database\ORMDatabase.edmx">
+    <EntityDeploy Include="Database\ORMEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ORMDatabase.Designer.cs</LastGenOutput>
+      <LastGenOutput>ORMEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Database\ORMDatabase.edmx.diagram">
-      <DependentUpon>ORMDatabase.edmx</DependentUpon>
+    <None Include="Database\ORMEntities.edmx.diagram">
+      <DependentUpon>ORMEntities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -106,22 +106,22 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database\ORMDatabase.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ORMDatabase.edmx</DependentUpon>
-      <LastGenOutput>ORMDatabase.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Database\ORMDatabase.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ORMDatabase.edmx</DependentUpon>
-      <LastGenOutput>ORMDatabase.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\ORMSettings\ORMSettings.csproj">
       <Project>{ea8df939-9578-4e85-8944-c1f313126b3a}</Project>
       <Name>ORMSettings</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\ORMEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ORMEntities.edmx</DependentUpon>
+      <LastGenOutput>ORMEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\ORMEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ORMEntities.edmx</DependentUpon>
+      <LastGenOutput>ORMEntities.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

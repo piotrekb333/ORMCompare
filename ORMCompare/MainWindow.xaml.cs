@@ -33,8 +33,17 @@ namespace ORMCompare
         public MainWindow()
         {
             InitializeComponent();
-            /*
+            
             TestTimeMethods s = new TestTimeMethods(EnumsClass.ORMTool.PetaPoco);
+            TestTimeMethods s1 = new TestTimeMethods(EnumsClass.ORMTool.ADOSqlClient);
+            TestTimeMethods s2 = new TestTimeMethods(EnumsClass.ORMTool.Drapper);
+            TestTimeMethods s3 = new TestTimeMethods(EnumsClass.ORMTool.EntityFramework);
+            var res3 = s2.GetAllEmployeesTest();
+            var res4 = s3.GetAllEmployeesTest();
+            var res1 = s.GetAllEmployeesTest();
+            var res2 = s1.GetAllEmployeesTest();
+
+            /*
             var dd = s.EntityFrameworkInsertEmployee();
             TimeChartModel mod = new TimeChartModel();
             mod.ChartData = new List<TimeModel>();

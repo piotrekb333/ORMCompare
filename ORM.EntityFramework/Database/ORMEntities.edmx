@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ORMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ORMEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -46,7 +46,7 @@
           <Property Name="FirstName" Type="nvarchar(max)" />
           <Property Name="LastName" Type="nvarchar(max)" />
           <Property Name="Birthday" Type="datetime" Nullable="false" />
-          <Property Name="EmployeeTitleId" Type="int" Nullable="false" />
+          <Property Name="EmployeeTitleId" Type="int" />
         </EntityType>
         <EntityType Name="EmployeeTitles">
           <Key>
@@ -112,9 +112,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_Employees_dbo_EmployeeTitles_EmployeeTitleId">
-          <End Role="EmployeeTitles" Type="Self.EmployeeTitles" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="EmployeeTitles" Type="Self.EmployeeTitles" Multiplicity="0..1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EmployeeTitles">
@@ -125,7 +123,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ORMModelStoreContainer">
+        <EntityContainer Name="ORMEntitiesStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DepartmentEmployees" EntityType="Self.DepartmentEmployees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DepartmentManagers" EntityType="Self.DepartmentManagers" Schema="dbo" store:Type="Tables" />
@@ -157,7 +155,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ORMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ORMEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -205,7 +203,7 @@
           <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EmployeeTitleId" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeTitleId" Type="Int32" />
           <NavigationProperty Name="DepartmentEmployees" Relationship="Self.FK_dbo_DepartmentEmployees_dbo_Employees_EmployeeId" FromRole="Employees" ToRole="DepartmentEmployees" />
           <NavigationProperty Name="DepartmentManagers" Relationship="Self.FK_dbo_DepartmentManagers_dbo_Employees_EmployeeId" FromRole="Employees" ToRole="DepartmentManagers" />
           <NavigationProperty Name="EmployeeTitles" Relationship="Self.FK_dbo_Employees_dbo_EmployeeTitles_EmployeeTitleId" FromRole="Employees" ToRole="EmployeeTitles" />
@@ -275,9 +273,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_Employees_dbo_EmployeeTitles_EmployeeTitleId">
-          <End Role="EmployeeTitles" Type="Self.EmployeeTitles" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="EmployeeTitles" Type="Self.EmployeeTitles" Multiplicity="0..1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EmployeeTitles">
@@ -288,7 +284,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ORMEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="DepartmentEmployees" EntityType="Self.DepartmentEmployees" />
           <EntitySet Name="DepartmentManagers" EntityType="Self.DepartmentManagers" />
@@ -321,9 +317,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ORMModelStoreContainer" CdmEntityContainer="ORMEntities">
+        <EntityContainerMapping StorageEntityContainer="ORMEntitiesStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="ORMModel.C__MigrationHistory">
+            <EntityTypeMapping TypeName="ORMEntities.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
                 <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
                 <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
@@ -333,7 +329,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DepartmentEmployees">
-            <EntityTypeMapping TypeName="ORMModel.DepartmentEmployees">
+            <EntityTypeMapping TypeName="ORMEntities.DepartmentEmployees">
               <MappingFragment StoreEntitySet="DepartmentEmployees">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
@@ -342,7 +338,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DepartmentManagers">
-            <EntityTypeMapping TypeName="ORMModel.DepartmentManagers">
+            <EntityTypeMapping TypeName="ORMEntities.DepartmentManagers">
               <MappingFragment StoreEntitySet="DepartmentManagers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
@@ -351,7 +347,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Departments">
-            <EntityTypeMapping TypeName="ORMModel.Departments">
+            <EntityTypeMapping TypeName="ORMEntities.Departments">
               <MappingFragment StoreEntitySet="Departments">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -359,7 +355,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="ORMModel.Employees">
+            <EntityTypeMapping TypeName="ORMEntities.Employees">
               <MappingFragment StoreEntitySet="Employees">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -370,7 +366,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EmployeeTitles">
-            <EntityTypeMapping TypeName="ORMModel.EmployeeTitles">
+            <EntityTypeMapping TypeName="ORMEntities.EmployeeTitles">
               <MappingFragment StoreEntitySet="EmployeeTitles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />

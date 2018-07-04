@@ -10,11 +10,54 @@ namespace ADOSqlClient.Repositories.Implementations
 {
     public class ADOSqlClientRepository : ORMSettings.Interfaces.IORMDatabaseMethods
     {
+        string connectionString = "Data Source=DESKTOP-2F2DTR9\\SQLEXPRESS;Initial Catalog=ORM;Integrated Security=true;TrustServerCertificate=False;MultipleActiveResultSets=True;";
+        public ADOSqlClientRepository()
+        {
+
+        }
+        public IEnumerable<Employee> GetAllEmployee()
+        {
+            string queryString = "select * from Employees";
+            List<Employee> emp = new List<Employee>();
+            using (SqlConnection connection =
+    new SqlConnection(connectionString))
+            {
+
+                SqlCommand command = new SqlCommand(queryString, connection);
+                connection.Open();
+                var res = command.ExecuteReader();
+                while (res.NextResult())
+                {
+                    int id = int.Parse(res["Id"].ToString());
+                    string firstName = res["FirstName"].ToString();
+                    string lastName = res["LastName"].ToString();
+                    DateTime dateBirthday = Convert.ToDateTime(res["BirthDay"]);
+                    int? titleId=null;
+                    int help;
+                    if(int.TryParse(res["EmployeeTitleId"]?.ToString(), out help))
+                    {
+                        titleId = help;
+                    }
+                    emp.Add(new Employee
+                    {
+                        FirstName = firstName,
+                        LastName = lastName,
+                        Birthday = dateBirthday,
+                        EmployeeTitleId = titleId,
+                        Id = id
+
+                    });
+                }
+                connection.Close();
+
+            }
+            return emp;
+        }
+
         public bool InsertEmployee(Employee model)
         {
             try
             {
-                string connectionString = "Data Source=DESKTOP-2F2DTR9\\SQLEXPRESS;Initial Catalog=ORM;Integrated Security=true;TrustServerCertificate=False;MultipleActiveResultSets=True;";
                 string queryString = "Insert into Employees (FirstName,LastName,Birthday,EmployeeTitleId) values (@0,@1,@2,@3)";
 
                 using (SqlConnection connection =

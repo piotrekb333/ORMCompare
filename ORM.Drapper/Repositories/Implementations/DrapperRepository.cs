@@ -18,6 +18,16 @@ namespace ORM.Drapper.Repositories.Implementations
             connection = new System.Data.SqlClient.SqlConnection("Data Source=DESKTOP-2F2DTR9\\SQLEXPRESS;Initial Catalog=ORM;Integrated Security=true;TrustServerCertificate=False;MultipleActiveResultSets=True;");
             connection.Open();
         }
+
+        public IEnumerable<Employee> GetAllEmployee()
+        {
+            using (connection)
+            {
+                const string query = "select * from Employees";
+                return  connection.Query<Employee>(query);
+            }
+        }
+
         public bool InsertEmployee(Employee model)
         {
             using (connection)

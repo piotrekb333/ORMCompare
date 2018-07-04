@@ -20,6 +20,17 @@ namespace ORM.PetaPoco.Repositories.Implementations
             dbConnection.Open();
             db = new Database(dbConnection);
         }
+
+        public IEnumerable<Employee> GetAllEmployee()
+        {
+            using (dbConnection)
+            {
+                const string query = "select * from Employees";
+                var res = db.Query<Employee>(query).ToList();
+                return res;
+            }
+        }
+
         public bool InsertEmployee(Employee model)
         {
             using (dbConnection)
