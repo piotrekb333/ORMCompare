@@ -189,6 +189,7 @@ namespace ORMCompare.Services.Repositories
         {
             try
             {
+                this._context.Database.CommandTimeout = 3600;
                 this._context.Database.ExecuteSqlCommand("exec "+procedureName+" @Number", new SqlParameter("@Number", number));
                 this._context.SaveChanges();
             }

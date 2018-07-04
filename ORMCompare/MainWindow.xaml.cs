@@ -21,6 +21,7 @@ using ORMCompare.ApplicationModels;
 using ORMCompare.Services.Interfaces;
 using ORMCompare.Services.Repositories;
 using ORMCompare.Services.ManageDatabase;
+using System.Windows.Threading;
 
 namespace ORMCompare
 {
@@ -73,30 +74,35 @@ namespace ORMCompare
             {
                 System.Threading.ThreadPool.QueueUserWorkItem(delegate {
                     manager.InsertRandomEmployees(employees);
+                    InitTablesInfo();
                 }, null);
             }
             if (titles > 0)
             {
                 System.Threading.ThreadPool.QueueUserWorkItem(delegate {
                     manager.InsertRandomEmployeeTitle(titles);
+                    InitTablesInfo();
                 }, null);
             }
             if (departments > 0)
             {
                 System.Threading.ThreadPool.QueueUserWorkItem(delegate {
                     manager.InsertRandomDepartment(departments);
+                    InitTablesInfo();
                 }, null);
             }
             if (managers > 0)
             {
                 System.Threading.ThreadPool.QueueUserWorkItem(delegate {
                     manager.InsertRandomDepartmentManagers(managers);
+                    InitTablesInfo();
                 }, null);
             }
             if (depemployees > 0)
             {
                 System.Threading.ThreadPool.QueueUserWorkItem(delegate {
                     manager.InsertRandomDepartmentEmployees(depemployees);
+                    InitTablesInfo();
                 }, null);
             }
         }
@@ -108,11 +114,24 @@ namespace ORMCompare
             var stats=manager.GetTablesStatistics();
             if (stats == null)
                 return;
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    lbNumberDepartmentEmployees.Content = stats.DepartmentEmployees.ToString();
+                    lbNumberDepartments.Content = stats.Departments.ToString();
+                    lbNumberDepartmentsManagers.Content = stats.DepartmentManagers.ToString();
+                    lbNumberEmployees.Content = stats.Employees.ToString();
+                    lbNumberEmployeeTitles.Content = stats.EmployeeTitles;
+                }), DispatcherPriority.Background);
+            }), DispatcherPriority.Background);
+            /*
             lbNumberDepartmentEmployees.Content = stats.DepartmentEmployees.ToString();
             lbNumberDepartments.Content = stats.Departments.ToString();
             lbNumberDepartmentsManagers.Content = stats.DepartmentManagers.ToString();
             lbNumberEmployees.Content = stats.Employees.ToString();
             lbNumberEmployeeTitles.Content = stats.EmployeeTitles;
+            */
         }
     }
 }

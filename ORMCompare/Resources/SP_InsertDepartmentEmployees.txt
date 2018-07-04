@@ -33,8 +33,7 @@ BEGIN
 	  		Insert into @VariableEmployees
 	    Select Id from Employees
 
-			Insert into @VariableEmployees 
-	  Select null
+
 
 
 
