@@ -75,7 +75,7 @@
       <DependentUpon>201806292043038_changedCol.cs</DependentUpon>
     </Compile>
     <Compile Include="ApplicationModels\TablesStatistics.cs" />
-    <Compile Include="Properties\Resources1.Designer.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -139,7 +139,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -201,6 +201,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SP_InsertEmployeeTitles.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SP_DeleteDepartments.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SP_DeleteDepartmentManagers.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SP_DeleteDepartmentEmployees.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SP_DeleteEmployees.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SP_DeleteEmployeeTitles.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

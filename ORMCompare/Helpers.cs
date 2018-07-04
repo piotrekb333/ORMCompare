@@ -15,6 +15,13 @@ namespace ORMCompare
         public static string SPDeleteAllDepartments = "SP_DeleteAllDepartments";
         public static string SPDeleteAllEmployees = "SP_DeleteAllEmployees";
 
+        public static string SPDeleteEmployeeTitle = "SP_DeleteEmployeeTitles";
+        public static string SPDeleteDepartmentEmployees = "SP_DeleteDepartmentEmployees";
+        public static string SPDeleteDepartmentManagers = "SP_DeleteDepartmentManagers";
+        public static string SPDeleteDepartments = "SP_DeleteDepartments";
+        public static string SPDeleteEmployees = "SP_DeleteEmployees";
+
+
         public static string SPInsertEmployeeTitle = "SP_InsertEmployeeTitles";
         public static string SPInsertDepartmentEmployees = "SP_InsertDepartmentEmployees";
         public static string SPInsertDepartmentManagers = "SP_InsertDepartmentManagers";

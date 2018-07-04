@@ -1,0 +1,16 @@
+CREATE PROCEDURE [dbo].[SP_DeleteDepartments] 
+@Number int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	BEGIN TRANSACTION;
+	Delete from DepartmentEmployees  where DepartmentId in (select top (@Number) t.Id from Departments t) 
+	Delete from DepartmentManagers  where DepartmentId in (select top (@Number) t.Id from Departments t) 
+	Delete top (@Number) from Departments
+	COMMIT TRANSACTION
+END
