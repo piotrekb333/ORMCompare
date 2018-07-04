@@ -66,11 +66,17 @@ namespace ORMCompare.Migrations
                         Title = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
-            this.Sql(Properties.Resources.SP_DeleteAllEmployeeTitles);
+            this.Sql(Properties.Resources.SP_DeleteAllEmployees);
             this.Sql(Properties.Resources.SP_DeleteAllDepartmentEmployees);
             this.Sql(Properties.Resources.SP_DeleteAllDepartmentManagers);
             this.Sql(Properties.Resources.SP_DeleteAllDepartments);
             this.Sql(Properties.Resources.SP_DeleteAllEmployees);
+
+            this.Sql(Properties.Resources.SP_InsertDepartmentEmployees);
+            this.Sql(Properties.Resources.SP_InsertDepartmentManagers);
+            this.Sql(Properties.Resources.SP_InsertDepartments);
+            this.Sql(Properties.Resources.SP_InsertEmployees);
+            this.Sql(Properties.Resources.SP_InsertEmployeeTitles);
 
         }
 

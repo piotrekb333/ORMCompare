@@ -30,36 +30,30 @@ namespace ORMCompare.Services.ManageDatabase
 
         public bool InsertRandomEmployeeTitle(int count)
         {
-            for (int i = 0; i < count; i++)
-            {
-                EmployeeTitle model = new EmployeeTitle();
-                model.Title = "test"+i.ToString();
-                Thread t1 = new Thread(() => new EmployeeTitleRepository().Insert(model));
-                t1.Start();
-                //employeeTitleRepository.Insert(model);
-            }
+            employeeTitleRepository.InsertRandom(Helpers.SPInsertEmployeeTitle, count);
             return true;
         }
 
         public bool InsertRandomDepartment(int count)
         {
-            for (int i = 0; i < count; i++)
-            {
-                Department model = new Department();
-                model.Name = "testDeparment" + i.ToString();
-                departmentRepository.Insert(model);
-            }
+            departmentRepository.InsertRandom(Helpers.SPInsertDepartments, count);
             return true;
         }
         public bool InsertRandomEmployees(int count)
         {
-            for(int i = 0; i < count; i++)
-            {
-                Employee model = new Employee();
-                model.Birthday = DateTime.Now;
-                model.FirstName = "test";
-                model.LastName = "test";
-            }
+            employeeRepository.InsertRandom(Helpers.SPInsertEmployees, count);
+            return true;
+        }
+
+        public bool InsertRandomDepartmentManagers(int count)
+        {
+            departmentManagerRepository.InsertRandom(Helpers.SPInsertDepartmentManagers, count);
+            return true;
+        }
+
+        public bool InsertRandomDepartmentEmployees(int count)
+        {
+            departmentEmployeeRepository.InsertRandom(Helpers.SPInsertDepartmentEmployees, count);
             return true;
         }
 

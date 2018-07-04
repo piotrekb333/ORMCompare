@@ -18,5 +18,6 @@ namespace ORMCompare.Services.Interfaces
         void DeleteLast();
         long NumberOfRecords();
         void DeleteAll(string procedureName);
+        void InsertRandom(string procedureName,int number);
     }
 }

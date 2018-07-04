@@ -133,4 +133,19 @@
   <data name="SP_DeleteAllEmployeeTitles" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SP_DeleteAllEmployeeTitles.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
   </data>
+  <data name="SP_InsertDepartmentEmployees" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SP_InsertDepartmentEmployees.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
+  </data>
+  <data name="SP_InsertDepartmentManagers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SP_InsertDepartmentManagers.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
+  </data>
+  <data name="SP_InsertDepartments" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SP_InsertDepartments.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
+  </data>
+  <data name="SP_InsertEmployees" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SP_InsertEmployees.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
+  </data>
+  <data name="SP_InsertEmployeeTitles" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SP_InsertEmployeeTitles.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
+  </data>
 </root>

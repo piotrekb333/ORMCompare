@@ -1,0 +1,22 @@
+CREATE PROCEDURE [dbo].[SP_InsertDepartments]
+	-- Add the parameters for the stored procedure here
+	@Number int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	DECLARE @cnt INT = 0;
+
+		  WHILE @cnt < @Number
+BEGIN
+	Insert into Departments (Name) 
+	values ('TestDep');
+   SET @cnt = @cnt + 1;
+END;
+
+
+
+
+
+END

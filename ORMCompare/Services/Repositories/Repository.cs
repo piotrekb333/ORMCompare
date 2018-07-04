@@ -184,6 +184,31 @@ namespace ORMCompare.Services.Repositories
             }
         }
 
+        public void InsertRandom(string procedureName, int number)
+        {
+            try
+            {
+                this._context.Database.ExecuteSqlCommand(procedureName,number);
+                this._context.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                var msg = string.Empty;
+
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        msg += string.Format("Property: {0} Error: {1}",
+                        validationError.PropertyName, validationError.ErrorMessage) + Environment.NewLine;
+                    }
+                }
+
+                var fail = new Exception(msg, dbEx);
+                throw fail;
+            }
+        }
+
         public virtual IQueryable<T> Table
         {
             get

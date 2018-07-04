@@ -1,0 +1,37 @@
+CREATE PROCEDURE [dbo].[SP_InsertEmployees]
+	-- Add the parameters for the stored procedure here
+	@Number int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	DECLARE @cnt INT = 0;
+	DECLARE @titleId INT = null;
+		DECLARE @VariableEmployeeTitles TABLE(
+		Id int IDENTITY (1, 1),
+    TitleId int NULL
+);
+    -- Insert statements for procedure here
+		Insert into @VariableEmployeeTitles
+	    Select Id from EmployeeTitles
+
+			Insert into @VariableEmployeeTitles 
+	  Select null
+
+	  WHILE @cnt < @Number
+BEGIN
+   	  SELECT top 1 @titleId=TitleId FROM @VariableEmployeeTitles WHERE Id >= RAND() * 
+    ( SELECT MAX (Id ) FROM @VariableEmployeeTitles ) 
+ORDER BY id 
+
+	Insert into Employees (FirstName,LastName,Birthday,EmployeeTitleId) 
+	values ('test','test',GETDATE(),@titleId);
+   SET @cnt = @cnt + 1;
+END;
+
+
+
+
+
+END

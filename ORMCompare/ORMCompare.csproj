@@ -75,6 +75,11 @@
       <DependentUpon>201806292043038_changedCol.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\TablesStatistics.cs" />
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\Interfaces\IDatabaseManagment.cs" />
     <Compile Include="Services\Interfaces\IDepartmentEmployeeRepository.cs" />
     <Compile Include="Services\Interfaces\IDepartmentManagerRepository.cs" />
@@ -121,11 +126,6 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -139,7 +139,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -190,6 +190,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SP_DeleteAllDepartmentEmployees.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SP_InsertDepartmentEmployees.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SP_InsertDepartmentManagers.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SP_InsertDepartments.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SP_InsertEmployees.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SP_InsertEmployeeTitles.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

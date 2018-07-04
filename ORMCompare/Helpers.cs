@@ -15,6 +15,12 @@ namespace ORMCompare
         public static string SPDeleteAllDepartments = "SP_DeleteAllDepartments";
         public static string SPDeleteAllEmployees = "SP_DeleteAllEmployees";
 
+        public static string SPInsertEmployeeTitle = "SP_InsertEmployeeTitles";
+        public static string SPInsertDepartmentEmployees = "SP_InsertDepartmentEmployees";
+        public static string SPInsertDepartmentManagers = "SP_InsertDepartmentManagers";
+        public static string SPInsertDepartments = "SP_InsertDepartments";
+        public static string SPInsertEmployees = "SP_InsertEmployees";
+
         public static string GetConnectionString()
         {
             string source = ORMCompare.Properties.Settings.Default.IP;

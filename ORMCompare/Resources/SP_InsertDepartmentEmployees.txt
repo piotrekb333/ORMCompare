@@ -1,0 +1,62 @@
+
+CREATE PROCEDURE [dbo].[SP_InsertDepartmentEmployees]
+	-- Add the parameters for the stored procedure here
+	@Number int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	DECLARE @cnt INT = 0;
+	DECLARE @helpId INT = null;
+	DECLARE @helpId2 INT = null;
+		DECLARE @VariableDepartments TABLE(
+		Id int IDENTITY (1, 1),
+    DepartmentId int NULL
+);
+
+		DECLARE @VariableEmployees TABLE(
+		Id int IDENTITY (1, 1),
+    EmployeeId int NULL
+);
+
+
+
+    -- Insert statements for procedure here
+		Insert into @VariableDepartments
+	    Select Id from Departments
+
+			Insert into @VariableDepartments 
+	  Select null
+
+	  -----------
+	  		Insert into @VariableEmployees
+	    Select Id from Employees
+
+			Insert into @VariableEmployees 
+	  Select null
+
+
+
+	  -----loop
+	  WHILE @cnt < @Number
+BEGIN
+   	  SELECT top 1 @helpId=DepartmentId FROM @VariableDepartments WHERE Id >= RAND() * 
+    ( SELECT MAX (Id ) FROM @VariableDepartments ) 
+ORDER BY id 
+
+
+   	  SELECT top 1 @helpId2=EmployeeId FROM @VariableEmployees WHERE Id >= RAND() * 
+    ( SELECT MAX (Id ) FROM @VariableEmployees ) 
+ORDER BY id 
+
+	Insert into DepartmentEmployees (DepartmentId,EmployeeId) 
+	values (@helpId,@helpId2);
+   SET @cnt = @cnt + 1;
+END;
+
+
+
+
+
+END

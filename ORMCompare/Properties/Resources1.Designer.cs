@@ -61,7 +61,20 @@ namespace ORMCompare.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to CREATE PROCEDURE SP_DeleteAllDepartmentEmployees
+        ///AS
+        ///BEGIN
+        ///	-- SET NOCOUNT ON added to prevent extra result sets from
+        ///	-- interfering with SELECT statements.
+        ///	SET NOCOUNT ON;
+        ///
+        ///    -- Insert statements for procedure here
+        ///	BEGIN TRANSACTION;
+        ///	Delete from DepartmentEmployees
+        ///	COMMIT TRANSACTION
+        ///END
+        ///GO
+        ///.
         /// </summary>
         internal static string SP_DeleteAllDepartmentEmployees {
             get {
@@ -70,7 +83,19 @@ namespace ORMCompare.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to CREATE PROCEDURE SP_DeleteAllDepartmentManagers
+        ///AS
+        ///BEGIN
+        ///	-- SET NOCOUNT ON added to prevent extra result sets from
+        ///	-- interfering with SELECT statements.
+        ///	SET NOCOUNT ON;
+        ///
+        ///    -- Insert statements for procedure here
+        ///	BEGIN TRANSACTION;
+        ///	Delete from DepartmentManagers
+        ///	COMMIT TRANSACTION
+        ///END
+        ///GO.
         /// </summary>
         internal static string SP_DeleteAllDepartmentManagers {
             get {
@@ -145,6 +170,127 @@ namespace ORMCompare.Properties {
         internal static string SP_DeleteAllEmployeeTitles {
             get {
                 return ResourceManager.GetString("SP_DeleteAllEmployeeTitles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///CREATE PROCEDURE [dbo].[SP_InsertDepartmentEmployees]
+        ///	-- Add the parameters for the stored procedure here
+        ///	@Number int
+        ///AS
+        ///BEGIN
+        ///	-- SET NOCOUNT ON added to prevent extra result sets from
+        ///	-- interfering with SELECT statements.
+        ///	SET NOCOUNT ON;
+        ///	DECLARE @cnt INT = 0;
+        ///	DECLARE @helpId INT = null;
+        ///	DECLARE @helpId2 INT = null;
+        ///		DECLARE @VariableDepartments TABLE(
+        ///		Id int IDENTITY (1, 1),
+        ///    DepartmentId int NULL
+        ///);
+        ///
+        ///		DECLARE @VariableEmployees TABLE(
+        ///		Id int IDENTITY (1, 1),
+        ///    Emplo [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SP_InsertDepartmentEmployees {
+            get {
+                return ResourceManager.GetString("SP_InsertDepartmentEmployees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE PROCEDURE [dbo].[SP_InsertDepartmentManagers]
+        ///	-- Add the parameters for the stored procedure here
+        ///	@Number int
+        ///AS
+        ///BEGIN
+        ///	-- SET NOCOUNT ON added to prevent extra result sets from
+        ///	-- interfering with SELECT statements.
+        ///	SET NOCOUNT ON;
+        ///	DECLARE @cnt INT = 0;
+        ///	DECLARE @helpId INT = null;
+        ///	DECLARE @helpId2 INT = null;
+        ///		DECLARE @VariableDepartments TABLE(
+        ///		Id int IDENTITY (1, 1),
+        ///    DepartmentId int NULL
+        ///);
+        ///
+        ///		DECLARE @VariableEmployees TABLE(
+        ///		Id int IDENTITY (1, 1),
+        ///    Employee [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SP_InsertDepartmentManagers {
+            get {
+                return ResourceManager.GetString("SP_InsertDepartmentManagers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE PROCEDURE [dbo].[SP_InsertDepartments]
+        ///	-- Add the parameters for the stored procedure here
+        ///	@Number int
+        ///AS
+        ///BEGIN
+        ///	-- SET NOCOUNT ON added to prevent extra result sets from
+        ///	-- interfering with SELECT statements.
+        ///	SET NOCOUNT ON;
+        ///	DECLARE @cnt INT = 0;
+        ///
+        ///		  WHILE @cnt &lt; @Number
+        ///BEGIN
+        ///	Insert into Departments (Name) 
+        ///	values (&apos;TestDep&apos;);
+        ///   SET @cnt = @cnt + 1;
+        ///END;
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///END
+        ///.
+        /// </summary>
+        internal static string SP_InsertDepartments {
+            get {
+                return ResourceManager.GetString("SP_InsertDepartments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE PROCEDURE [dbo].[SP_InsertEmployees]
+        ///	-- Add the parameters for the stored procedure here
+        ///	@Number int
+        ///AS
+        ///BEGIN
+        ///	-- SET NOCOUNT ON added to prevent extra result sets from
+        ///	-- interfering with SELECT statements.
+        ///	SET NOCOUNT ON;
+        ///	DECLARE @cnt INT = 0;
+        ///	DECLARE @titleId INT = null;
+        ///		DECLARE @VariableEmployeeTitles TABLE(
+        ///		Id int IDENTITY (1, 1),
+        ///    TitleId int NULL
+        ///);
+        ///    -- Insert statements for procedure here
+        ///		Insert into @VariableEmployeeTitles
+        ///	    Select Id from EmployeeTitles
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SP_InsertEmployees {
+            get {
+                return ResourceManager.GetString("SP_InsertEmployees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string SP_InsertEmployeeTitles {
+            get {
+                return ResourceManager.GetString("SP_InsertEmployeeTitles", resourceCulture);
             }
         }
     }
