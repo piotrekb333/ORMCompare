@@ -1,4 +1,4 @@
-﻿using ORMCompare.Models;
+﻿using ORMCompare.ApplicationModels;
 using ORMCompare.Services.Interfaces;
 using ORMCompare.Services.Repositories;
 using ORMSettings.Models;

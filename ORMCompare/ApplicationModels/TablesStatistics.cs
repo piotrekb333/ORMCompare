@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ORMCompare.Models
+namespace ORMCompare.ApplicationModels
 {
     public class TablesStatistics
     {
