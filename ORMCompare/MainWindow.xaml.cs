@@ -130,7 +130,55 @@ namespace ORMCompare
             }
         }
 
-
+        private void DeleteRecords()
+        {
+            ManageDatabaseService manager = new ManageDatabaseService();
+            int employees = 0;
+            int titles = 0;
+            int departments = 0;
+            int managers = 0;
+            int depemployees = 0;
+            int.TryParse(txtInsertEmployees.Text, out employees);
+            int.TryParse(txtInsertEmployeeTitles.Text, out titles);
+            int.TryParse(txtInsertDepartments.Text, out departments);
+            int.TryParse(txtInsertDepartmentManagers.Text, out managers);
+            int.TryParse(txtInsertDepartmentEmployees.Text, out depemployees);
+            if (employees > 0)
+            {
+                System.Threading.ThreadPool.QueueUserWorkItem(delegate {
+                    manager.DeleteRangeEmployees(employees);
+                    InitTablesInfo();
+                }, null);
+            }
+            if (titles > 0)
+            {
+                System.Threading.ThreadPool.QueueUserWorkItem(delegate {
+                    manager.DeleteRangeEmployeeTitles(titles);
+                    InitTablesInfo();
+                }, null);
+            }
+            if (departments > 0)
+            {
+                System.Threading.ThreadPool.QueueUserWorkItem(delegate {
+                    manager.DeleteRangeDepartments(departments);
+                    InitTablesInfo();
+                }, null);
+            }
+            if (managers > 0)
+            {
+                System.Threading.ThreadPool.QueueUserWorkItem(delegate {
+                    manager.DeleteRangeDepartmentManagers(managers);
+                    InitTablesInfo();
+                }, null);
+            }
+            if (depemployees > 0)
+            {
+                System.Threading.ThreadPool.QueueUserWorkItem(delegate {
+                    manager.DeleteRangeDepartmentEmployee(depemployees);
+                    InitTablesInfo();
+                }, null);
+            }
+        }
 
         //EVENTS
         private void BtnInsertRecords_Click(object sender, RoutedEventArgs e)
@@ -139,7 +187,7 @@ namespace ORMCompare
         }
         private void BtnDeleteRecords_Click(object sender, RoutedEventArgs e)
         {
-
+            DeleteRecords();
         }
 
         private void btnDeleteAllEmployees_Click(object sender, RoutedEventArgs e)

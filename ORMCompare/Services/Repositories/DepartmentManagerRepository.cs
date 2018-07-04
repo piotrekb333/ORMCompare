@@ -57,5 +57,9 @@ namespace ORMCompare.Services.Repositories
         {
             departmentManagerRepository.InsertRandom(procedureName, number);
         }
+        public void DeleteRange(string procedureName, int number)
+        {
+            departmentManagerRepository.DeleteRange(procedureName, number);
+        }
     }
 }

@@ -57,12 +57,12 @@ namespace ORMCompare.Services.ManageDatabase
             return true;
         }
 
+        //DeleteAll
         public bool DeleteAllEmployeeTitles()
         {
             employeeTitleRepository.DeleteAll(Helpers.SPDeleteAllEmployeeTitle);
             return true;
         }
-
 
         public bool DeleteAllEmployees()
         {
@@ -85,6 +85,35 @@ namespace ORMCompare.Services.ManageDatabase
             return true;
         }
 
+        //DELETE RANGE
+        public bool DeleteRangeEmployeeTitles(int count)
+        {
+            employeeTitleRepository.DeleteRange(Helpers.SPDeleteEmployeeTitle,count);
+            return true;
+        }
+
+        public bool DeleteRangeEmployees(int count)
+        {
+            employeeRepository.DeleteRange(Helpers.SPDeleteEmployees, count);
+            return true;
+        }
+        public bool DeleteRangeDepartments(int count)
+        {
+            departmentRepository.DeleteRange(Helpers.SPDeleteDepartments, count);
+            return true;
+        }
+        public bool DeleteRangeDepartmentEmployee(int count)
+        {
+            departmentEmployeeRepository.DeleteRange(Helpers.SPDeleteDepartmentEmployees, count);
+            return true;
+        }
+        public bool DeleteRangeDepartmentManagers(int count)
+        {
+            departmentManagerRepository.DeleteRange(Helpers.SPDeleteDepartmentManagers, count);
+            return true;
+        }
+
+        //Stats
         public TablesStatistics GetTablesStatistics()
         {
             TablesStatistics returnModel = new TablesStatistics();
