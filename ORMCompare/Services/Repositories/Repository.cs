@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -188,7 +189,7 @@ namespace ORMCompare.Services.Repositories
         {
             try
             {
-                this._context.Database.ExecuteSqlCommand(procedureName,number);
+                this._context.Database.ExecuteSqlCommand("exec "+procedureName+" @Number", new SqlParameter("@Number", number));
                 this._context.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)

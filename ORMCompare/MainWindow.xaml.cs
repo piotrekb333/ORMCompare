@@ -58,7 +58,47 @@ namespace ORMCompare
 
         private void BtnInsertRecords_Click(object sender, RoutedEventArgs e)
         {
-
+            ManageDatabaseService manager = new ManageDatabaseService();
+            int employees = 0;
+            int titles = 0;
+            int departments = 0;
+            int managers = 0;
+            int depemployees = 0;
+            int.TryParse(txtInsertEmployees.Text, out employees);
+            int.TryParse(txtInsertEmployeeTitles.Text, out titles);
+            int.TryParse(txtInsertDepartments.Text, out departments);
+            int.TryParse(txtInsertDepartmentManagers.Text, out managers);
+            int.TryParse(txtInsertDepartmentEmployees.Text, out depemployees);
+            if (employees > 0)
+            {
+                System.Threading.ThreadPool.QueueUserWorkItem(delegate {
+                    manager.InsertRandomEmployees(employees);
+                }, null);
+            }
+            if (titles > 0)
+            {
+                System.Threading.ThreadPool.QueueUserWorkItem(delegate {
+                    manager.InsertRandomEmployeeTitle(titles);
+                }, null);
+            }
+            if (departments > 0)
+            {
+                System.Threading.ThreadPool.QueueUserWorkItem(delegate {
+                    manager.InsertRandomDepartment(departments);
+                }, null);
+            }
+            if (managers > 0)
+            {
+                System.Threading.ThreadPool.QueueUserWorkItem(delegate {
+                    manager.InsertRandomDepartmentManagers(managers);
+                }, null);
+            }
+            if (depemployees > 0)
+            {
+                System.Threading.ThreadPool.QueueUserWorkItem(delegate {
+                    manager.InsertRandomDepartmentEmployees(depemployees);
+                }, null);
+            }
         }
 
 
