@@ -1,4 +1,5 @@
-﻿using ORMCompare.Services.Interfaces;
+﻿using ORMCompare.Models;
+using ORMCompare.Services.Interfaces;
 using ORMCompare.Services.Repositories;
 using ORMSettings.Models;
 using System;
@@ -15,12 +16,15 @@ namespace ORMCompare.Services.ManageDatabase
         IEmployeeRepository employeeRepository;
         IEmployeeTitleRepository employeeTitleRepository;
         IDepartmentRepository departmentRepository;
+        IDepartmentManagerRepository departmentManagerRepository;
+        IDepartmentEmployeeRepository departmentEmployeeRepository;
         public ManageDatabaseService()
         {
             employeeRepository = new EmployeeRepository();
             employeeTitleRepository = new EmployeeTitleRepository();
             departmentRepository=new DepartmentRepository();
-
+            departmentManagerRepository = new DepartmentManagerRepository();
+            departmentEmployeeRepository = new DepartmentEmployeeRepository();
         }
 
 
@@ -63,6 +67,17 @@ namespace ORMCompare.Services.ManageDatabase
         {
             employeeTitleRepository.DeleteAll(Helpers.SPDeleteAllEmployeeTitle);
             return true;
+        }
+
+        public TablesStatistics GetTablesStatistics()
+        {
+            TablesStatistics returnModel = new TablesStatistics();
+            returnModel.DepartmentEmployees = departmentEmployeeRepository.NumberOfRecords();
+            returnModel.DepartmentManagers = departmentManagerRepository.NumberOfRecords();
+            returnModel.Departments = departmentRepository.NumberOfRecords();
+            returnModel.Employees = employeeRepository.NumberOfRecords();
+            returnModel.EmployeeTitles = employeeTitleRepository.NumberOfRecords();
+            return returnModel;
         }
     }
 }

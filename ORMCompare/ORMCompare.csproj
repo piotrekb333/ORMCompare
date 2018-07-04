@@ -74,6 +74,7 @@
     <Compile Include="Migrations\201806292043038_changedCol.Designer.cs">
       <DependentUpon>201806292043038_changedCol.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\TablesStatistics.cs" />
     <Compile Include="Services\Interfaces\IDatabaseManagment.cs" />
     <Compile Include="Services\Interfaces\IDepartmentEmployeeRepository.cs" />
     <Compile Include="Services\Interfaces\IDepartmentManagerRepository.cs" />

@@ -40,7 +40,7 @@ namespace ORMCompare
             mod.ChartData.Add(new TimeModel { Name = "Entity", Time = dd });
             TimeChart ch = new TimeChart(mod);
             ch.ShowDialog();
-            */
+            
             IEmployeeRepository dd = new EmployeeRepository();
             dd.Insert(new ORMSettings.Models.Employee
             {
@@ -51,12 +51,28 @@ namespace ORMCompare
 
             ManageDatabaseService d = new ManageDatabaseService();
             d.DeleteAllEmployeeTitles();
+            */
             //d.InsertRandomEmployeeTitle(100000);
+            InitTablesInfo();
         }
 
         private void BtnInsertRecords_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+
+        private void InitTablesInfo()
+        {
+            ManageDatabaseService manager = new ManageDatabaseService();
+            var stats=manager.GetTablesStatistics();
+            if (stats == null)
+                return;
+            lbNumberDepartmentEmployees.Content = stats.DepartmentEmployees.ToString();
+            lbNumberDepartments.Content = stats.Departments.ToString();
+            lbNumberDepartmentsManagers.Content = stats.DepartmentManagers.ToString();
+            lbNumberEmployees.Content = stats.Employees.ToString();
+            lbNumberEmployeeTitles.Content = stats.EmployeeTitles;
         }
     }
 }
