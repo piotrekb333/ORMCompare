@@ -57,7 +57,30 @@ namespace ORMCompare
             InitTablesInfo();
         }
 
-        private void BtnInsertRecords_Click(object sender, RoutedEventArgs e)
+
+        private void InitTablesInfo()
+        {
+            ManageDatabaseService manager = new ManageDatabaseService();
+            var stats = manager.GetTablesStatistics();
+            if (stats == null)
+                return;
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                lbNumberDepartmentEmployees.Content = stats.DepartmentEmployees.ToString();
+                lbNumberDepartments.Content = stats.Departments.ToString();
+                lbNumberDepartmentsManagers.Content = stats.DepartmentManagers.ToString();
+                lbNumberEmployees.Content = stats.Employees.ToString();
+                lbNumberEmployeeTitles.Content = stats.EmployeeTitles;
+            }), DispatcherPriority.Background);
+            /*
+            lbNumberDepartmentEmployees.Content = stats.DepartmentEmployees.ToString();
+            lbNumberDepartments.Content = stats.Departments.ToString();
+            lbNumberDepartmentsManagers.Content = stats.DepartmentManagers.ToString();
+            lbNumberEmployees.Content = stats.Employees.ToString();
+            lbNumberEmployeeTitles.Content = stats.EmployeeTitles;
+            */
+        }
+        private void InsertRecords()
         {
             ManageDatabaseService manager = new ManageDatabaseService();
             int employees = 0;
@@ -108,30 +131,50 @@ namespace ORMCompare
         }
 
 
-        private void InitTablesInfo()
+
+        //EVENTS
+        private void BtnInsertRecords_Click(object sender, RoutedEventArgs e)
+        {
+            InsertRecords();
+        }
+        private void BtnDeleteRecords_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDeleteAllEmployees_Click(object sender, RoutedEventArgs e)
         {
             ManageDatabaseService manager = new ManageDatabaseService();
-            var stats=manager.GetTablesStatistics();
-            if (stats == null)
-                return;
-            Dispatcher.BeginInvoke(new Action(() =>
-            {
-                Dispatcher.BeginInvoke(new Action(() =>
-                {
-                    lbNumberDepartmentEmployees.Content = stats.DepartmentEmployees.ToString();
-                    lbNumberDepartments.Content = stats.Departments.ToString();
-                    lbNumberDepartmentsManagers.Content = stats.DepartmentManagers.ToString();
-                    lbNumberEmployees.Content = stats.Employees.ToString();
-                    lbNumberEmployeeTitles.Content = stats.EmployeeTitles;
-                }), DispatcherPriority.Background);
-            }), DispatcherPriority.Background);
-            /*
-            lbNumberDepartmentEmployees.Content = stats.DepartmentEmployees.ToString();
-            lbNumberDepartments.Content = stats.Departments.ToString();
-            lbNumberDepartmentsManagers.Content = stats.DepartmentManagers.ToString();
-            lbNumberEmployees.Content = stats.Employees.ToString();
-            lbNumberEmployeeTitles.Content = stats.EmployeeTitles;
-            */
+            manager.DeleteAllEmployees();
+            InitTablesInfo();
+        }
+
+        private void btnDeleteAllDepartments_Click(object sender, RoutedEventArgs e)
+        {
+            ManageDatabaseService manager = new ManageDatabaseService();
+            manager.DeleteAllDepartments();
+            InitTablesInfo();
+        }
+
+        private void btnDeleteAllEmployeeTitles_Click(object sender, RoutedEventArgs e)
+        {
+            ManageDatabaseService manager = new ManageDatabaseService();
+            manager.DeleteAllEmployeeTitles();
+            InitTablesInfo();
+        }
+
+        private void btnDeleteAllDepartmentEmployees_Click(object sender, RoutedEventArgs e)
+        {
+            ManageDatabaseService manager = new ManageDatabaseService();
+            manager.DeleteAllDepartmentEmployee();
+            InitTablesInfo();
+        }
+
+        private void btnDeleteAllDepartmentsManagers_Click(object sender, RoutedEventArgs e)
+        {
+            ManageDatabaseService manager = new ManageDatabaseService();
+            manager.DeleteAllDepartmentManagers();
+            InitTablesInfo();
         }
     }
 }

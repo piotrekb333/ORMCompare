@@ -63,6 +63,28 @@ namespace ORMCompare.Services.ManageDatabase
             return true;
         }
 
+
+        public bool DeleteAllEmployees()
+        {
+            employeeRepository.DeleteAll(Helpers.SPDeleteAllEmployees);
+            return true;
+        }
+        public bool DeleteAllDepartments()
+        {
+            departmentRepository.DeleteAll(Helpers.SPDeleteAllDepartments);
+            return true;
+        }
+        public bool DeleteAllDepartmentEmployee()
+        {
+            departmentEmployeeRepository.DeleteAll(Helpers.SPDeleteAllDepartmentEmployees);
+            return true;
+        }
+        public bool DeleteAllDepartmentManagers()
+        {
+            departmentManagerRepository.DeleteAll(Helpers.SPDeleteAllDepartmentManagers);
+            return true;
+        }
+
         public TablesStatistics GetTablesStatistics()
         {
             TablesStatistics returnModel = new TablesStatistics();
