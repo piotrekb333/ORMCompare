@@ -25,13 +25,10 @@ BEGIN
     ( SELECT MAX (Id ) FROM @VariableEmployeeTitles ) 
 ORDER BY id 
 
-	Insert into Employees (FirstName,LastName,Birthday,EmployeeTitleId) 
-	values ('test','test',GETDATE(),@titleId);
+	Insert into Employees (FirstName,LastName,Salary,Birthday,EmployeeTitleId) 
+	values ('test','test',ROUND(RAND(CHECKSUM(NEWID())) * (10000), 2),GETDATE(),@titleId);
    SET @cnt = @cnt + 1;
 END;
-
-
-
 
 
 END
