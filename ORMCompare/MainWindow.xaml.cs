@@ -38,10 +38,10 @@ namespace ORMCompare
             TestTimeMethods s1 = new TestTimeMethods(EnumsClass.ORMTool.ADOSqlClient);
             TestTimeMethods s2 = new TestTimeMethods(EnumsClass.ORMTool.Drapper);
             TestTimeMethods s3 = new TestTimeMethods(EnumsClass.ORMTool.EntityFramework);
-            var res3 = s2.GetAllEmployeesTest();
-            var res4 = s3.GetAllEmployeesTest();
-            var res1 = s.GetAllEmployeesTest();
-            var res2 = s1.GetAllEmployeesTest();
+            //var res3 = s2.GetAllEmployeesTest();
+            //var res4 = s3.GetAllEmployeesTest();
+            //var res1 = s.GetAllEmployeesTest();
+            //var res2 = s1.GetAllEmployeesTest();
 
             /*
             var dd = s.EntityFrameworkInsertEmployee();
@@ -63,6 +63,7 @@ namespace ORMCompare
             d.DeleteAllEmployeeTitles();
             */
             //d.InsertRandomEmployeeTitle(100000);
+            LoadDatabaseSettings();
             InitTablesInfo();
         }
 
@@ -189,6 +190,24 @@ namespace ORMCompare
             }
         }
 
+        private void LoadDatabaseSettings()
+        {
+            SettingsManager manager = new SettingsManager();
+            var opt=manager.GetDatabaseSettings();
+            txtDatabase.Text = opt.Database;
+            txtIp.Text = opt.Ip;
+            txtPassword.Text = opt.Password;
+            txtLogin.Text = opt.Login;
+            txtPort.Text = opt.Port;
+        }
+
+        private void SaveDatabaseSettings(DatabaseSettingsModel model)
+        {
+            SettingsManager manager = new SettingsManager();
+            manager.SaveDatabaseSettings(model);
+
+        }
+
         //EVENTS
         private void BtnInsertRecords_Click(object sender, RoutedEventArgs e)
         {
@@ -232,6 +251,17 @@ namespace ORMCompare
             ManageDatabaseService manager = new ManageDatabaseService();
             manager.DeleteAllDepartmentManagers();
             InitTablesInfo();
+        }
+
+        private void BtnSaveDatabaseSettings_Click(object sender, RoutedEventArgs e)
+        {
+            DatabaseSettingsModel model = new DatabaseSettingsModel();
+            model.Database = txtDatabase.Text;
+            model.Ip = txtIp.Text;
+            model.Port = txtPassword.Text;
+            model.Login = txtLogin.Text;
+            model.Password = txtPassword.Text;
+            SaveDatabaseSettings(model);
         }
     }
 }
