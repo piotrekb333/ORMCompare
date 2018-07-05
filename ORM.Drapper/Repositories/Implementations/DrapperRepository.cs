@@ -28,8 +28,18 @@ namespace ORM.Drapper.Repositories.Implementations
         {
             using (connection)
             {
-                const string query = "Select avg(salary) from employees";
+                string query = "Select avg(salary) from employees";
                 return connection.ExecuteScalar<decimal>(query);
+            }
+        }
+
+        public bool DeleteFirstDepartmentEmployee()
+        {
+            using (connection)
+            {
+                string query = "Delete top (1) from DepartmentEmployees";
+                connection.Execute(query);
+                return true;
             }
         }
 
@@ -37,7 +47,7 @@ namespace ORM.Drapper.Repositories.Implementations
         {
             using (connection)
             {
-                const string query = "select * from Employees";
+                string query = "select * from Employees";
                 return  connection.Query<Employee>(query);
             }
         }
@@ -46,7 +56,7 @@ namespace ORM.Drapper.Repositories.Implementations
         {
             using (connection)
             {
-                const string query = "Insert into Employees (FirstName,LastName,Birthday,EmployeeTitleId) values (@Name,@Last,@Birth,@TitleId)";
+                string query = "Insert into Employees (FirstName,LastName,Birthday,EmployeeTitleId) values (@Name,@Last,@Birth,@TitleId)";
                 var parameters = new
                 {
                     Name = model.FirstName,

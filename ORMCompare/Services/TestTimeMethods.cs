@@ -60,5 +60,14 @@ namespace ORMCompare.Services
             var elapsedMs = watch.ElapsedMilliseconds;
             return elapsedMs;
         }
+
+        public long DeleteFirstDepartmentEmployeeTest()
+        {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            repo.DeleteFirstDepartmentEmployee();
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            return elapsedMs;
+        }
     }
 }

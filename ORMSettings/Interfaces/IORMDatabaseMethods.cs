@@ -10,6 +10,7 @@ namespace ORMSettings.Interfaces
     public interface IORMDatabaseMethods
     {
         bool InsertEmployee(Employee model);
+        bool DeleteFirstDepartmentEmployee();
         IEnumerable<Employee> GetAllEmployee();
         decimal AverageEmployeesSalary();
     }

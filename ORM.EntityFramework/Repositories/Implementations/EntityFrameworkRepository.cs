@@ -27,6 +27,14 @@ namespace ORM.EntityFramework.Repositories.Implementations
             return context.Employees.Average(m => m.Salary);
         }
 
+        public bool DeleteFirstDepartmentEmployee()
+        {
+            var first=context.DepartmentEmployees.FirstOrDefault();
+            if (first != null)
+                context.DepartmentEmployees.Remove(first);
+            return true;
+        }
+
         public IEnumerable<Employee> GetAllEmployee()
         {
             List<Employee> lastOutput = new List<Employee>();

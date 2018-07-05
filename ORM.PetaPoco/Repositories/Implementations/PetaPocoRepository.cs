@@ -29,8 +29,18 @@ namespace ORM.PetaPoco.Repositories.Implementations
         {
             using (dbConnection)
             {
-                const string query = "Select avg(salary) from employees";
+                string query = "Select avg(salary) from employees";
                 return db.ExecuteScalar<decimal>(query);
+            }
+        }
+
+        public bool DeleteFirstDepartmentEmployee()
+        {
+            using (dbConnection)
+            {
+                string query = "Delete top (1) from DepartmentEmployees";
+                db.Execute(query);
+                return true;
             }
         }
 
@@ -38,7 +48,7 @@ namespace ORM.PetaPoco.Repositories.Implementations
         {
             using (dbConnection)
             {
-                const string query = "select * from Employees";
+                string query = "select * from Employees";
                 var res = db.Query<Employee>(query).ToList();
                 return res;
             }

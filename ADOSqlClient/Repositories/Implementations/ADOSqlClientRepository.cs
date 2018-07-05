@@ -35,6 +35,21 @@ namespace ADOSqlClient.Repositories.Implementations
             return val;
         }
 
+        public bool DeleteFirstDepartmentEmployee()
+        {
+            string queryString = "Delete top (1) from DepartmentEmployees";
+            using (SqlConnection connection =
+    new SqlConnection(connectionString))
+            {
+
+                SqlCommand command = new SqlCommand(queryString, connection);
+                connection.Open();
+                var res = command.ExecuteNonQuery();
+                connection.Close();
+            }
+            return true;
+        }
+
         public IEnumerable<Employee> GetAllEmployee()
         {
             string queryString = "select * from Employees";
