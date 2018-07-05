@@ -19,10 +19,7 @@ namespace ORM.EntityFramework.Database
             : base("name=Entities")
         {
         }
-        public Entities(string connection)
-        : base(connection)
-        {
-        }
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

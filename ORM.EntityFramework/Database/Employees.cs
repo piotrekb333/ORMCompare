@@ -26,6 +26,7 @@ namespace ORM.EntityFramework.Database
         public string LastName { get; set; }
         public System.DateTime Birthday { get; set; }
         public Nullable<int> EmployeeTitleId { get; set; }
+        public decimal Salary { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DepartmentEmployees> DepartmentEmployees { get; set; }
