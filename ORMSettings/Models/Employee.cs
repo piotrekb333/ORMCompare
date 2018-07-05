@@ -13,7 +13,7 @@ namespace ORMSettings.Models
         public string LastName { get; set; }
         public DateTime Birthday { get; set; }
         public int? EmployeeTitleId { get; set; }
-
+        public decimal Salary { get; set; }
         public virtual ICollection<DepartmentEmployee> DepartmentEmployees { get; set; }
 
         public virtual ICollection<DepartmentManager> DepartmentManagers { get; set; }

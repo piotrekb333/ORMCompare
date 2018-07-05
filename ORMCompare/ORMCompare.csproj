@@ -76,6 +76,10 @@
       <DependentUpon>201806292043038_changedCol.cs</DependentUpon>
     </Compile>
     <Compile Include="ApplicationModels\TablesStatistics.cs" />
+    <Compile Include="Migrations\201807051218424_addSalaryColumn.cs" />
+    <Compile Include="Migrations\201807051218424_addSalaryColumn.Designer.cs">
+      <DependentUpon>201807051218424_addSalaryColumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -138,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806292043038_changedCol.resx">
       <DependentUpon>201806292043038_changedCol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807051218424_addSalaryColumn.resx">
+      <DependentUpon>201807051218424_addSalaryColumn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
