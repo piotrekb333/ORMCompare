@@ -67,6 +67,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ApplicationModels\DatabaseSettingsModel.cs" />
     <Compile Include="ApplicationModels\TimeChartModel.cs" />
     <Compile Include="ApplicationModels\TimeModel.cs" />
     <Compile Include="HelpersClasses\EnumsClass.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Services\Repositories\EmployeeRepository.cs" />
     <Compile Include="Services\Repositories\EmployeeTitleRepository.cs" />
     <Compile Include="Services\Repositories\Repository.cs" />
+    <Compile Include="Services\SettingsManager.cs" />
     <Compile Include="Services\TestTimeMethods.cs" />
     <Compile Include="Views\TimeChart.xaml.cs">
       <DependentUpon>TimeChart.xaml</DependentUpon>
