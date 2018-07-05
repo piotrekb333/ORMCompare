@@ -8,14 +8,19 @@ using ORMSettings.Models;
 using System.Data;
 
 using Dapper;
+using ORMSettings;
+
 namespace ORM.Drapper.Repositories.Implementations
 {
     public class DrapperRepository : ORMSettings.Interfaces.IORMDatabaseMethods
     {
         IDbConnection connection;
+        string connectionString = "";
         public DrapperRepository()
         {
-            connection = new System.Data.SqlClient.SqlConnection("Data Source=DESKTOP-2F2DTR9\\SQLEXPRESS;Initial Catalog=ORM;Integrated Security=true;TrustServerCertificate=False;MultipleActiveResultSets=True;");
+            connectionString = HelperDatabaseSettings.GetConnectionString();
+            //Data Source=DESKTOP-2F2DTR9\\SQLEXPRESS;Initial Catalog=ORM;Integrated Security=true;TrustServerCertificate=False;MultipleActiveResultSets=True;
+            connection = new System.Data.SqlClient.SqlConnection(connectionString);
             connection.Open();
         }
 

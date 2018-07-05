@@ -4,16 +4,17 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ORMSettings;
 using ORMSettings.Models;
 
 namespace ADOSqlClient.Repositories.Implementations
 {
     public class ADOSqlClientRepository : ORMSettings.Interfaces.IORMDatabaseMethods
     {
-        string connectionString = "Data Source=DESKTOP-2F2DTR9\\SQLEXPRESS;Initial Catalog=ORM;Integrated Security=true;TrustServerCertificate=False;MultipleActiveResultSets=True;";
+        string connectionString = "";//"Data Source=DESKTOP-2F2DTR9\\SQLEXPRESS;Initial Catalog=ORM;Integrated Security=true;TrustServerCertificate=False;MultipleActiveResultSets=True;";
         public ADOSqlClientRepository()
         {
-
+            connectionString = HelperDatabaseSettings.GetConnectionString();
         }
         public IEnumerable<Employee> GetAllEmployee()
         {

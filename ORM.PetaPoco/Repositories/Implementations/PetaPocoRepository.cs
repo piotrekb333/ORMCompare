@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ORMSettings;
 using ORMSettings.Models;
 using PetaPoco;
 namespace ORM.PetaPoco.Repositories.Implementations
@@ -13,9 +14,12 @@ namespace ORM.PetaPoco.Repositories.Implementations
     {
         private IDatabase db;
         private IDbConnection dbConnection;
+        private string connectionString = "";
         public PetaPocoRepository()
         {
-            string connectionString = "Data Source=DESKTOP-2F2DTR9\\SQLEXPRESS;Initial Catalog=ORM;Integrated Security=true;TrustServerCertificate=False;MultipleActiveResultSets=True;";
+            connectionString = HelperDatabaseSettings.GetConnectionString();
+            //string connectionString = "Data Source=DESKTOP-2F2DTR9\\SQLEXPRESS;Initial Catalog=ORM;Integrated Security=true;TrustServerCertificate=False;MultipleActiveResultSets=True;";
+
             dbConnection = new SqlConnection(connectionString);
             dbConnection.Open();
             db = new Database(dbConnection);

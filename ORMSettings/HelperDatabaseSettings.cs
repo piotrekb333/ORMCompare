@@ -9,6 +9,23 @@ namespace ORMSettings
 {
     public static class HelperDatabaseSettings
     {
+        public static string GetConnectionString()
+        {
+            string source = Properties.Settings.Default.Ip;
+            string user = "";
+            string security = "True";
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.Port))
+            {
+                source += "," + Properties.Settings.Default.Port;
+            }
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.Login))
+            {
+                user = $"User Id={Properties.Settings.Default.Login};Password={Properties.Settings.Default.Password};";
+                security = "False";
+            }
+            return $"Data Source={source};Initial Catalog={Properties.Settings.Default.Database};Integrated Security={security};{user}TrustServerCertificate=False;MultipleActiveResultSets=True;";
+
+        }
         public static string GetIp()
         {
             return Properties.Settings.Default.Ip;
