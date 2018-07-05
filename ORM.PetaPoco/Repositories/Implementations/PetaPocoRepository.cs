@@ -25,6 +25,15 @@ namespace ORM.PetaPoco.Repositories.Implementations
             db = new Database(dbConnection);
         }
 
+        public decimal AverageEmployeesSalary()
+        {
+            using (dbConnection)
+            {
+                const string query = "Select avg(salary) from employees";
+                return db.ExecuteScalar<decimal>(query);
+            }
+        }
+
         public IEnumerable<Employee> GetAllEmployee()
         {
             using (dbConnection)

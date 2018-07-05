@@ -24,6 +24,15 @@ namespace ORM.Drapper.Repositories.Implementations
             connection.Open();
         }
 
+        public decimal AverageEmployeesSalary()
+        {
+            using (connection)
+            {
+                const string query = "Select avg(salary) from employees";
+                return connection.ExecuteScalar<decimal>(query);
+            }
+        }
+
         public IEnumerable<Employee> GetAllEmployee()
         {
             using (connection)

@@ -16,6 +16,25 @@ namespace ADOSqlClient.Repositories.Implementations
         {
             connectionString = HelperDatabaseSettings.GetConnectionString();
         }
+
+        public decimal AverageEmployeesSalary()
+        {
+            decimal val = 0;
+            string queryString = "Select avg(salary) from employees";
+
+            using (SqlConnection connection =
+                new SqlConnection(connectionString))
+            {
+
+                SqlCommand command = new SqlCommand(queryString, connection);
+                connection.Open();
+                var res = command.ExecuteScalar();
+                connection.Close();
+                val = Convert.ToDecimal(res);
+            }
+            return val;
+        }
+
         public IEnumerable<Employee> GetAllEmployee()
         {
             string queryString = "select * from Employees";

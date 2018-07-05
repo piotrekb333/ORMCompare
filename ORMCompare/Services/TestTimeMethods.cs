@@ -51,5 +51,14 @@ namespace ORMCompare.Services
             var elapsedMs = watch.ElapsedMilliseconds;
             return elapsedMs;
         }
+
+        public long AverageEmployeesSalaryTest()
+        {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            repo.AverageEmployeesSalary();
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            return elapsedMs;
+        }
     }
 }

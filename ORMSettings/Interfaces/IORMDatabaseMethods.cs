@@ -11,5 +11,6 @@ namespace ORMSettings.Interfaces
     {
         bool InsertEmployee(Employee model);
         IEnumerable<Employee> GetAllEmployee();
+        decimal AverageEmployeesSalary();
     }
 }

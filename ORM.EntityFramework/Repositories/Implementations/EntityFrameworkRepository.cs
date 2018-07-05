@@ -22,6 +22,11 @@ namespace ORM.EntityFramework.Repositories.Implementations
 
         }
 
+        public decimal AverageEmployeesSalary()
+        {
+            return context.Employees.Average(m => m.Salary);
+        }
+
         public IEnumerable<Employee> GetAllEmployee()
         {
             List<Employee> lastOutput = new List<Employee>();
