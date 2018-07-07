@@ -9,6 +9,7 @@ using System.Data;
 
 using Dapper;
 using ORMSettings;
+using ORMSettings.Models.ViewModels;
 
 namespace ORM.Drapper.Repositories.Implementations
 {
@@ -49,6 +50,16 @@ namespace ORM.Drapper.Repositories.Implementations
             {
                 string query = "select * from Employees";
                 return  connection.Query<Employee>(query);
+            }
+        }
+
+        public IEnumerable<DepartmentEmployeeSalary> GetDepartmentEmployeeSalary()
+        {
+            using (connection)
+            {
+                string query = @"select d.id as DepartmentId,d.Name as DepartmentName, sum(e.Salary) as SalarySum from DepartmentEmployees de inner join Employees e on de.EmployeeId=e.Id inner join Departments d on de.DepartmentId=d.Id
+group by d.Id,d.Name";
+                return connection.Query<DepartmentEmployeeSalary>(query);
             }
         }
 

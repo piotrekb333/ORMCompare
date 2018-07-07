@@ -38,10 +38,10 @@ namespace ORMCompare
             TestTimeMethods s1 = new TestTimeMethods(EnumsClass.ORMTool.ADOSqlClient);
             TestTimeMethods s2 = new TestTimeMethods(EnumsClass.ORMTool.Drapper);
             TestTimeMethods s3 = new TestTimeMethods(EnumsClass.ORMTool.EntityFramework);
-            var res3 = s2.DeleteFirstDepartmentEmployeeTest();
-            var res4 = s3.DeleteFirstDepartmentEmployeeTest();
-            var res1 = s.DeleteFirstDepartmentEmployeeTest();
-            var res2 = s1.DeleteFirstDepartmentEmployeeTest();
+            var res3 = s2.GetDepartmentEmployeeSalary();
+            var res4 = s3.GetDepartmentEmployeeSalary();
+            var res1 = s.GetDepartmentEmployeeSalary();
+            var res2 = s1.GetDepartmentEmployeeSalary();
 
             /*
             var dd = s.EntityFrameworkInsertEmployee();

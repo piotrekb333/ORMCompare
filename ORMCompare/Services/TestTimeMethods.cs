@@ -69,5 +69,14 @@ namespace ORMCompare.Services
             var elapsedMs = watch.ElapsedMilliseconds;
             return elapsedMs;
         }
+
+        public long GetDepartmentEmployeeSalary()
+        {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            repo.GetDepartmentEmployeeSalary();
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            return elapsedMs;
+        }
     }
 }

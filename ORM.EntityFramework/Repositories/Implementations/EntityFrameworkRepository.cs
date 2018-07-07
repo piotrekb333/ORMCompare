@@ -2,6 +2,7 @@
 using ORM.EntityFramework.Database;
 using ORMSettings;
 using ORMSettings.Models;
+using ORMSettings.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,17 @@ namespace ORM.EntityFramework.Repositories.Implementations
                 lastOutput.Add(new Employee { FirstName = item.FirstName, LastName = item.LastName, Birthday = item.Birthday, EmployeeTitleId = item.EmployeeTitleId, Id = item.Id });
             }
             return lastOutput;
+        }
+
+        public IEnumerable<DepartmentEmployeeSalary> GetDepartmentEmployeeSalary()
+        {
+            List<DepartmentEmployeeSalary> res = context.DepartmentEmployees.GroupBy(m => new { m.Departments.Id, m.Departments.Name }).Select(m =>
+            new DepartmentEmployeeSalary {
+                DepartmentId=m.FirstOrDefault().Departments.Id,
+                DepartmentName=m.FirstOrDefault().Departments.Name,
+                SalarySum=m.Sum(mc=>mc.Employees.Salary)
+            }).ToList();
+            return res;
         }
 
         public bool InsertEmployee(ORMSettings.Models.Employee model)

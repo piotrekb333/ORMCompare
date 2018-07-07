@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ORMSettings;
 using ORMSettings.Models;
+using ORMSettings.Models.ViewModels;
 using PetaPoco;
 namespace ORM.PetaPoco.Repositories.Implementations
 {
@@ -51,6 +52,16 @@ namespace ORM.PetaPoco.Repositories.Implementations
                 string query = "select * from Employees";
                 var res = db.Query<Employee>(query).ToList();
                 return res;
+            }
+        }
+
+        public IEnumerable<DepartmentEmployeeSalary> GetDepartmentEmployeeSalary()
+        {
+            using (dbConnection)
+            {
+                string query = @"select d.id as DepartmentId,d.Name as DepartmentName, sum(e.Salary) as SalarySum from DepartmentEmployees de inner join Employees e on de.EmployeeId=e.Id inner join Departments d on de.DepartmentId=d.Id
+group by d.Id,d.Name";
+                return db.Query<DepartmentEmployeeSalary>(query);
             }
         }
 

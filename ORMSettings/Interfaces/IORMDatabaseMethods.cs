@@ -1,4 +1,5 @@
 ﻿using ORMSettings.Models;
+using ORMSettings.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,6 @@ namespace ORMSettings.Interfaces
         bool DeleteFirstDepartmentEmployee();
         IEnumerable<Employee> GetAllEmployee();
         decimal AverageEmployeesSalary();
+        IEnumerable<DepartmentEmployeeSalary> GetDepartmentEmployeeSalary();
     }
 }

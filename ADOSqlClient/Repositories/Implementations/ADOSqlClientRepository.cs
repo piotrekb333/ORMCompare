@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ORMSettings;
 using ORMSettings.Models;
+using ORMSettings.Models.ViewModels;
 
 namespace ADOSqlClient.Repositories.Implementations
 {
@@ -61,7 +62,7 @@ namespace ADOSqlClient.Repositories.Implementations
                 SqlCommand command = new SqlCommand(queryString, connection);
                 connection.Open();
                 var res = command.ExecuteReader();
-                while (res.NextResult())
+                while (res.Read())
                 {
                     int id = int.Parse(res["Id"].ToString());
                     string firstName = res["FirstName"].ToString();
@@ -80,6 +81,37 @@ namespace ADOSqlClient.Repositories.Implementations
                         Birthday = dateBirthday,
                         EmployeeTitleId = titleId,
                         Id = id
+
+                    });
+                }
+                connection.Close();
+
+            }
+            return emp;
+        }
+
+        public IEnumerable<DepartmentEmployeeSalary> GetDepartmentEmployeeSalary()
+        {
+            string queryString = @"select d.id as DepartmentId,d.Name as DepartmentName, sum(e.Salary) as SalarySum from DepartmentEmployees de inner join Employees e on de.EmployeeId=e.Id inner join Departments d on de.DepartmentId=d.Id
+group by d.Id,d.Name";
+            List<DepartmentEmployeeSalary> emp = new List<DepartmentEmployeeSalary>();
+            using (SqlConnection connection =
+    new SqlConnection(connectionString))
+            {
+
+                SqlCommand command = new SqlCommand(queryString, connection);
+                connection.Open();
+                var res = command.ExecuteReader();
+                while (res.Read())
+                {
+                    int id = int.Parse(res["DepartmentId"].ToString());
+                    string depName = res["DepartmentName"].ToString();
+                    decimal salary = Convert.ToDecimal(res["SalarySum"].ToString());
+                    emp.Add(new DepartmentEmployeeSalary
+                    {
+                        DepartmentId=id,
+                        DepartmentName=depName,
+                        SalarySum=salary
 
                     });
                 }
