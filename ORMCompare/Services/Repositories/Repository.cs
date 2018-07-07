@@ -237,6 +237,11 @@ namespace ORMCompare.Services.Repositories
             }
         }
 
+        public T GetFirst()
+        {
+            return this.Entities.FirstOrDefault();
+        }
+
         public virtual IQueryable<T> Table
         {
             get

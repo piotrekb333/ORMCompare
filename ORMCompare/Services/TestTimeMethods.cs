@@ -3,6 +3,8 @@ using ORM.Drapper.Repositories.Implementations;
 using ORM.EntityFramework.Repositories.Implementations;
 using ORM.PetaPoco.Repositories.Implementations;
 using ORMCompare.EnumsClass;
+using ORMCompare.Services.Interfaces;
+using ORMCompare.Services.Repositories;
 using ORMSettings.Interfaces;
 using System;
 namespace ORMCompare.Services
@@ -70,10 +72,28 @@ namespace ORMCompare.Services
             return elapsedMs;
         }
 
-        public long GetDepartmentEmployeeSalary()
+        public long GetDepartmentEmployeeSalaryTest()
         {
             var watch = System.Diagnostics.Stopwatch.StartNew();
             repo.GetDepartmentEmployeeSalary();
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            return elapsedMs;
+        }
+
+        public long UpdateEmployeeTest()
+        {
+            IEmployeeRepository repoEmp = new EmployeeRepository();
+            var first= repoEmp.GetFirst();
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            repo.UpdateEmployee(first.Id, new ORMSettings.Models.Employee
+            {
+                FirstName="update",
+                Birthday=first.Birthday,
+                EmployeeTitleId=first.EmployeeTitleId,
+                LastName=first.LastName,
+                Salary=first.Salary
+            });
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
             return elapsedMs;

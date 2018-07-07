@@ -11,6 +11,7 @@ namespace ORMCompare.Services.Interfaces
     public interface IRepository<T> where T : BaseEntity
     {
         T GetById(object id);
+        T GetFirst();
         void Insert(T entity);
         void Update(T entity);
         void Delete(T entity);

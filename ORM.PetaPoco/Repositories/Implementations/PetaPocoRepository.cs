@@ -81,5 +81,23 @@ group by d.Id,d.Name";
             }
             return true;
         }
+
+        public bool UpdateEmployee(int id, Employee model)
+        {
+            using (dbConnection)
+            {
+                var parameters = new
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Birthday = model.Birthday,
+                    EmployeeTitleId = model.EmployeeTitleId,
+                    Salary = model.Salary,
+                    Id = model.Id
+                };
+                db.Update("Employees", "Id", parameters);
+                return true;
+            }
+        }
     }
 }

@@ -85,5 +85,19 @@ namespace ORM.EntityFramework.Repositories.Implementations
                 return false;
             }
         }
+
+        public bool UpdateEmployee(int id, Employee model)
+        {
+            var emp=context.Employees.FirstOrDefault(m => m.Id == id);
+            if (emp == null)
+                return false;
+            emp.FirstName = model.FirstName;
+            emp.LastName = model.LastName;
+            emp.EmployeeTitleId = model.EmployeeTitleId;
+            emp.Birthday = model.Birthday;
+            emp.Salary = model.Salary;
+            context.SaveChanges();
+            return true;
+        }
     }
 }

@@ -148,6 +148,37 @@ group by d.Id,d.Name";
                 return false;
             }
         }
+
+        public bool UpdateEmployee(int id, Employee model)
+        {
+            try
+            {
+                string queryString = "Update Employees set FirstName=@0,LastName=@1,Birthday=@2,TitleId=@3,Salay=@4 where Id=@5";
+
+                using (SqlConnection connection =
+                    new SqlConnection(connectionString))
+                {
+
+                    SqlCommand command = new SqlCommand(queryString, connection);
+                    command.Parameters.AddWithValue("@0", model.FirstName);
+                    command.Parameters.AddWithValue("@1", model.LastName);
+                    command.Parameters.AddWithValue("@2", model.Birthday);
+                    command.Parameters.AddWithValue("@3", model.EmployeeTitleId);
+                    command.Parameters.AddWithValue("@4", model.Salary);
+                    command.Parameters.AddWithValue("@5", id);
+
+                    connection.Open();
+                    var res = command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }
 

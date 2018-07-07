@@ -61,5 +61,9 @@ namespace ORMCompare.Services.Repositories
         {
             employeeRepository.DeleteRange(procedureName, number);
         }
+        public Employee GetFirst()
+        {
+            return employeeRepository.GetFirst();
+        }
     }
 }

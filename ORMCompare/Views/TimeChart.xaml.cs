@@ -29,11 +29,12 @@ namespace ORMCompare.Views
             InitializeComponent();
             var colSeries = new ColumnSeries();
             Axis axis = new Axis();
+            axis.Foreground= new SolidColorBrush(Color.FromRgb(0,0,0));
             axis.Labels = new List<string>();
             chartModel = model;
             CharSeries = new SeriesCollection();
             colSeries.Values = new ChartValues<long>();
-            
+            colSeries.Foreground= new SolidColorBrush(Color.FromRgb(0, 0, 0));
             foreach (var item in model.ChartData)
             {
                 colSeries.Values.Add(item.Time);
@@ -42,6 +43,10 @@ namespace ORMCompare.Views
             CharSeries.Add(colSeries);
             this.lvTimeChart.Series = CharSeries;
             this.lvTimeChart.AxisX = new AxesCollection { axis };
+
+
+
+
         }
     }
 }

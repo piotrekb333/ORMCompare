@@ -67,15 +67,38 @@ group by d.Id,d.Name";
         {
             using (connection)
             {
-                string query = "Insert into Employees (FirstName,LastName,Birthday,EmployeeTitleId) values (@Name,@Last,@Birth,@TitleId)";
+                string query = "Insert into Employees (FirstName,LastName,Birthday,EmployeeTitleId,Salary) values (@Name,@Last,@Birth,@TitleId,@Salary)";
                 var parameters = new
                 {
                     Name = model.FirstName,
                     Last = model.LastName,
                     Birth = model.Birthday,
-                    TitleId = model.EmployeeTitleId
+                    TitleId = model.EmployeeTitleId,
+                    Salary = model.Salary
                 };
                 var exec=connection.Execute(query, parameters);
+                if (exec > 0)
+                    return true;
+                else
+                    return false;
+            }
+        }
+
+        public bool UpdateEmployee(int id, Employee model)
+        {
+            using (connection)
+            {
+                string query = "Update Employees set FirstName=@Name,LastName=@Last,Birthday=@Birth,EmployeeTitleId=@TitleId,Salary=@Salary where Id=@Id";
+                var parameters = new
+                {
+                    Name = model.FirstName,
+                    Last = model.LastName,
+                    Birth = model.Birthday,
+                    TitleId = model.EmployeeTitleId,
+                    Salary=model.Salary,
+                    Id=model.Id
+                };
+                var exec = connection.Execute(query, parameters);
                 if (exec > 0)
                     return true;
                 else
