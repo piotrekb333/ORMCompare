@@ -98,5 +98,16 @@ namespace ORMCompare.Services
             var elapsedMs = watch.ElapsedMilliseconds;
             return elapsedMs;
         }
+
+        public long GetEmployeeByIdTest()
+        {
+            IEmployeeRepository repoEmp = new EmployeeRepository();
+            var first = repoEmp.GetFirst();
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            repo.GetEmployeeById(first.Id);
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            return elapsedMs;
+        }
     }
 }

@@ -16,5 +16,6 @@ namespace ORMSettings.Interfaces
         decimal AverageEmployeesSalary();
         IEnumerable<DepartmentEmployeeSalary> GetDepartmentEmployeeSalary();
         bool UpdateEmployee(int id, Employee model);
+        Employee GetEmployeeById(int id);
     }
 }

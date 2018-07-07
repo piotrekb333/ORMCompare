@@ -121,6 +121,47 @@ group by d.Id,d.Name";
             return emp;
         }
 
+        public Employee GetEmployeeById(int id)
+        {
+            string queryString = "select * from Employees where id=@0";
+            List<Employee> emp = new List<Employee>();
+            using (SqlConnection connection =
+    new SqlConnection(connectionString))
+            {
+
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Parameters.AddWithValue("@0", id);
+
+                connection.Open();
+                var res = command.ExecuteReader();
+                while (res.Read())
+                {
+                    int helpid = int.Parse(res["Id"].ToString());
+                    string firstName = res["FirstName"].ToString();
+                    string lastName = res["LastName"].ToString();
+                    DateTime dateBirthday = Convert.ToDateTime(res["BirthDay"]);
+                    int? titleId = null;
+                    int help;
+                    if (int.TryParse(res["EmployeeTitleId"]?.ToString(), out help))
+                    {
+                        titleId = help;
+                    }
+                    emp.Add(new Employee
+                    {
+                        FirstName = firstName,
+                        LastName = lastName,
+                        Birthday = dateBirthday,
+                        EmployeeTitleId = titleId,
+                        Id = helpid
+
+                    });
+                }
+                connection.Close();
+
+            }
+            return emp.FirstOrDefault();
+        }
+
         public bool InsertEmployee(Employee model)
         {
             try

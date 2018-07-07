@@ -63,6 +63,19 @@ group by d.Id,d.Name";
             }
         }
 
+        public Employee GetEmployeeById(int id)
+        {
+            using (connection)
+            {
+                var parameters = new
+                {
+                    Id = id,
+                };
+                string query = "select * from Employees where Id=@Id";
+                return connection.QueryFirst<Employee>(query, parameters);
+            }
+        }
+
         public bool InsertEmployee(Employee model)
         {
             using (connection)

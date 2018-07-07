@@ -66,6 +66,29 @@ namespace ORM.EntityFramework.Repositories.Implementations
             return res;
         }
 
+        public Employee GetEmployeeById(int id)
+        {
+            var res= context.Employees.FirstOrDefault(m => m.Id == id);
+            /*
+            var mapConf = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<ORM.EntityFramework.Database.Employees, ORMSettings.Models.Employee>();
+            });
+            IMapper mapper = mapConf.CreateMapper();
+            var output = mapper.Map<ORM.EntityFramework.Database.Employees, ORMSettings.Models.Employee>(res);
+            */
+            Employee output = new Employee
+            {
+                Birthday = res.Birthday,
+                Id = res.Id,
+                FirstName = res.FirstName,
+                LastName = res.LastName,
+                Salary = res.Salary,
+                EmployeeTitleId=res.EmployeeTitleId
+            };
+            return output;
+        }
+
         public bool InsertEmployee(ORMSettings.Models.Employee model)
         {
             try

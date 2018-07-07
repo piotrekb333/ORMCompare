@@ -65,6 +65,17 @@ group by d.Id,d.Name";
             }
         }
 
+        public Employee GetEmployeeById(int id)
+        {
+            using (dbConnection)
+            {
+                return db.SingleOrDefault<Employee>("select * from Employees where id=@EmployeeId", new
+                {
+                    EmployeeId = id,
+                });
+            }
+        }
+
         public bool InsertEmployee(Employee model)
         {
             using (dbConnection)
