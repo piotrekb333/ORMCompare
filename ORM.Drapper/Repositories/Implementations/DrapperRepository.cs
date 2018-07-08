@@ -44,6 +44,22 @@ namespace ORM.Drapper.Repositories.Implementations
             }
         }
 
+        public bool ExistsSalary(decimal salary)
+        {
+            using (connection)
+            {
+                var parameters = new
+                {
+                    Salary = salary,
+                };
+                string query = @"select  case WHEN count(Id) <=0 THEN 0
+    WHEN count(Id) >0 THEN 1 end
+	from Employees
+	where    exists ( select salary from Employees e where Salary=@Salary )";
+                return connection.ExecuteScalar<bool>(query, parameters);
+            }
+        }
+
         public IEnumerable<Employee> GetAllEmployee()
         {
             using (connection)

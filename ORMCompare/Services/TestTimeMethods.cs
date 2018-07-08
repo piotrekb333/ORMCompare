@@ -109,5 +109,17 @@ namespace ORMCompare.Services
             var elapsedMs = watch.ElapsedMilliseconds;
             return elapsedMs;
         }
+
+        public long ExistsSalaryTest()
+        {
+            IEmployeeRepository repoEmp = new EmployeeRepository();
+            var first = repoEmp.GetFirst();
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            repo.ExistsSalary(100);
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            return elapsedMs;
+        }
+        
     }
 }

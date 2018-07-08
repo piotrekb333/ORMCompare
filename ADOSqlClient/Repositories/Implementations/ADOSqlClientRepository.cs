@@ -51,6 +51,29 @@ namespace ADOSqlClient.Repositories.Implementations
             return true;
         }
 
+        public bool ExistsSalary(decimal salary)
+        {
+            bool val;
+            string queryString = @"select  case WHEN count(Id) <=0 THEN 0
+    WHEN count(Id) >0 THEN 1 end
+	from Employees
+	where    exists ( select salary from Employees e where Salary=@0 )";
+
+            using (SqlConnection connection =
+                new SqlConnection(connectionString))
+            {
+
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Parameters.AddWithValue("@0", salary);
+
+                connection.Open();
+                var res = command.ExecuteScalar();
+                connection.Close();
+                val = Convert.ToBoolean(res);
+            }
+            return val;
+        }
+
         public IEnumerable<Employee> GetAllEmployee()
         {
             string queryString = "select * from Employees";

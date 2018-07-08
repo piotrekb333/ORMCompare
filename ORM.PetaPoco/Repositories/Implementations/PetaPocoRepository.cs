@@ -45,6 +45,24 @@ namespace ORM.PetaPoco.Repositories.Implementations
             }
         }
 
+        public bool ExistsSalary(decimal salary)
+        {
+            using (dbConnection)
+            {
+                string query = @"select  case WHEN count(Id) <=0 THEN 0
+    WHEN count(Id) >0 THEN 1 end
+	from Employees
+	where    exists ( select salary from Employees e where Salary=@Salary )";
+
+                var parameters = new
+                {
+                    Salary = salary
+                };
+
+                return db.ExecuteScalar<bool>(query,parameters);
+            }
+        }
+
         public IEnumerable<Employee> GetAllEmployee()
         {
             using (dbConnection)

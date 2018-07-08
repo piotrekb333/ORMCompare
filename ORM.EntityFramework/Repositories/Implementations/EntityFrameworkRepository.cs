@@ -36,6 +36,11 @@ namespace ORM.EntityFramework.Repositories.Implementations
             return true;
         }
 
+        public bool ExistsSalary(decimal salary)
+        {
+            return context.Employees.Any(m => m.Salary == salary);
+        }
+
         public IEnumerable<Employee> GetAllEmployee()
         {
             List<Employee> lastOutput = new List<Employee>();

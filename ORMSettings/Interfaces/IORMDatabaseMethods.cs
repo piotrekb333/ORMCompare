@@ -17,5 +17,7 @@ namespace ORMSettings.Interfaces
         IEnumerable<DepartmentEmployeeSalary> GetDepartmentEmployeeSalary();
         bool UpdateEmployee(int id, Employee model);
         Employee GetEmployeeById(int id);
+        bool ExistsSalary(decimal salary);
+
     }
 }
