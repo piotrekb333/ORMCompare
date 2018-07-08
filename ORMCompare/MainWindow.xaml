@@ -104,7 +104,35 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Security" />
+            <TabItem Header="Test methods">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <ComboBox Name="cbMethod">
+
+                    </ComboBox>
+                    <Button Grid.Column="1"  Grid.Row="0" Content="GENERATE RESULT" Name="BtnGenerateResult" Click="BtnGenerateResult_Click"/>
+                    <Button Grid.Column="0"  Grid.Row="1" Content="CLEAR TABLE" Name="BtnDelete" Click="BtnDelete_Click"/>
+
+                    <Button Grid.Column="1"  Grid.Row="1" Content="GENERATE CHART" Name="BtnChart" Click="BtnChart_Click" />
+
+                    <DataGrid Name="DGTestResult"
+                        Grid.Row="3"
+                              Grid.ColumnSpan="2"
+                              Grid.RowSpan="3"
+                              />
+                </Grid>
+            </TabItem>
             <TabItem Header="Database Settings" >
                 <Grid >
                     <Grid.ColumnDefinitions>

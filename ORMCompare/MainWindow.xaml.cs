@@ -22,6 +22,8 @@ using ORMCompare.Services.Interfaces;
 using ORMCompare.Services.Repositories;
 using ORMCompare.Services.ManageDatabase;
 using System.Windows.Threading;
+using ORMCompare.Services.TestService;
+using System.Collections.ObjectModel;
 
 namespace ORMCompare
 {
@@ -30,6 +32,8 @@ namespace ORMCompare
     /// </summary>
     public partial class MainWindow : Window
     {
+        ObservableCollection<DataGridResultModel> dataGridList;
+        TestService testService;
         public MainWindow()
         {
             InitializeComponent();
@@ -51,8 +55,8 @@ namespace ORMCompare
             mod.ChartData.Add(new TimeModel { Name = "ADOSql", Time = res2 });
             mod.ChartData.Add(new TimeModel { Name = "Drapper", Time = res3 });
             mod.ChartData.Add(new TimeModel { Name = "EntityFramework", Time = res4 });
-            TimeChart ch = new TimeChart(mod);
-            ch.ShowDialog();
+           // TimeChart ch = new TimeChart(mod);
+           // ch.ShowDialog();
             /*
             IEmployeeRepository dd = new EmployeeRepository();
             dd.Insert(new ORMSettings.Models.Employee
@@ -66,8 +70,11 @@ namespace ORMCompare
             d.DeleteAllEmployeeTitles();
             */
             //d.InsertRandomEmployeeTitle(100000);
+            FillCbMethods();
             LoadDatabaseSettings();
             InitTablesInfo();
+            dataGridList = new ObservableCollection<DataGridResultModel>();
+            testService = new TestService();
         }
 
 
@@ -93,6 +100,19 @@ namespace ORMCompare
             lbNumberEmployeeTitles.Content = stats.EmployeeTitles;
             */
         }
+
+        private void FillCbMethods()
+        {
+            cbMethod.Items.Add("Insert Employee");
+            cbMethod.Items.Add("Delete first Departament Employee");
+            cbMethod.Items.Add("Get All Employee");
+            cbMethod.Items.Add("Average Employees Salary");
+            cbMethod.Items.Add("Get Department Employee Salary");
+            cbMethod.Items.Add("Update Employee");
+            cbMethod.Items.Add("Get Employee By Id");
+            cbMethod.Items.Add("Exists Salary");
+        }
+
         private void InsertRecords()
         {
             ManageDatabaseService manager = new ManageDatabaseService();
@@ -265,6 +285,28 @@ namespace ORMCompare
             model.Login = txtLogin.Text;
             model.Password = txtPassword.Text;
             SaveDatabaseSettings(model);
+        }
+
+        private void BtnGenerateResult_Click(object sender, RoutedEventArgs e)
+        {
+            if (cbMethod.SelectedIndex == -1)
+            {
+                MessageBox.Show("Choose test!");
+                return;               
+            }
+            var res=testService.GetTestResult(cbMethod.SelectedValue?.ToString());
+            dataGridList.Add(res);
+            DGTestResult.ItemsSource = dataGridList;
+        }
+
+        private void BtnChart_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            dataGridList.Clear();
         }
     }
 }
