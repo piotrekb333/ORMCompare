@@ -301,7 +301,25 @@ namespace ORMCompare
 
         private void BtnChart_Click(object sender, RoutedEventArgs e)
         {
+            ChartStatistics model = new ChartStatistics();
+            List<long> ado = new List<long>();
+            List<long> entity = new List<long>();
+            List<long> petapoco = new List<long>();
+            List<long> drapper = new List<long>();
 
+            foreach (var item in dataGridList)
+            {
+                ado.Add(item.ADO);
+                entity.Add(item.EntityFramework);
+                petapoco.Add(item.PetaPoco);
+                drapper.Add(item.Drapper);
+            }
+            model.ADO = ado;
+            model.EntityFramework = entity;
+            model.PetaPoco = petapoco;
+            model.Drapper = drapper;
+            TimeChart chart = new TimeChart(model);
+            chart.ShowDialog();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)

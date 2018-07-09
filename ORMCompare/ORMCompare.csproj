@@ -67,8 +67,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ApplicationModels\ChartStatistics.cs" />
     <Compile Include="ApplicationModels\DatabaseSettingsModel.cs" />
     <Compile Include="ApplicationModels\DataGridResultModel.cs" />
+    <Compile Include="ApplicationModels\TimeChartManyModel.cs" />
     <Compile Include="ApplicationModels\TimeChartModel.cs" />
     <Compile Include="ApplicationModels\TimeModel.cs" />
     <Compile Include="HelpersClasses\EnumsClass.cs" />

@@ -31,7 +31,11 @@ namespace ADOSqlClient.Repositories.Implementations
                 connection.Open();
                 var res = command.ExecuteScalar();
                 connection.Close();
-                val = Convert.ToDecimal(res);
+                if(!(res is DBNull))
+                {
+                    val = Convert.ToDecimal(res);
+
+                }
             }
             return val;
         }

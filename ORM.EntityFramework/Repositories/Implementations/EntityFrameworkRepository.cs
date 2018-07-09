@@ -25,7 +25,8 @@ namespace ORM.EntityFramework.Repositories.Implementations
 
         public decimal AverageEmployeesSalary()
         {
-            return context.Employees.Average(m => m.Salary);
+            decimal? res = context.Employees?.Average(m => m.Salary);
+            return res ?? 0;
         }
 
         public bool DeleteFirstDepartmentEmployee()
