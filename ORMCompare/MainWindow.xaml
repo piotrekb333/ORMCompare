@@ -113,7 +113,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="30"/>
-                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="30"/>
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="2*"/>
@@ -125,7 +125,7 @@
                     <Button Grid.Column="0"  Grid.Row="1" Content="CLEAR TABLE" Name="BtnDelete" Click="BtnDelete_Click"/>
 
                     <Button Grid.Column="1"  Grid.Row="1" Content="GENERATE CHART" Name="BtnChart" Click="BtnChart_Click" />
-
+                    <Button Grid.Column="0"  Grid.Row="2" Content="CONVERT TO CSV" Name="BtnConvertTable" Click="BtnConvertTable_Click" />
                     <DataGrid Name="DGTestResult"
                         Grid.Row="3"
                               Grid.ColumnSpan="2"

@@ -24,6 +24,8 @@ using ORMCompare.Services.ManageDatabase;
 using System.Windows.Threading;
 using ORMCompare.Services.TestService;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Data;
 
 namespace ORMCompare
 {
@@ -231,6 +233,43 @@ namespace ORMCompare
 
         }
 
+        private void ConvertTable()
+        {
+            // Create the CSV file to which grid data will be exported.
+            StreamWriter sw = new StreamWriter("GridData.csv");
+            // First we will write the headers.
+            var ds= Helpers.ToDataSet(dataGridList.ToList());
+            DataTable dt = ds.Tables[0];
+
+            int iColCount = dt.Columns.Count;
+            for (int i = 0; i < iColCount; i++)
+            {
+                sw.Write(dt.Columns[i]);
+                if (i < iColCount - 1)
+                {
+                    sw.Write(",");
+                }
+            }
+            sw.Write(sw.NewLine);
+            // Now write all the rows.
+            foreach (DataRow dr in dt.Rows)
+            {
+                for (int i = 0; i < iColCount; i++)
+                {
+                    if (!Convert.IsDBNull(dr[i]))
+                    {
+                        sw.Write(dr[i].ToString());
+                    }
+                    if (i < iColCount - 1)
+                    {
+                        sw.Write(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator);
+                    }
+                }
+                sw.Write(sw.NewLine);
+            }
+            sw.Close();
+        }
+
         //EVENTS
         private void BtnInsertRecords_Click(object sender, RoutedEventArgs e)
         {
@@ -325,6 +364,11 @@ namespace ORMCompare
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             dataGridList.Clear();
+        }
+
+        private void BtnConvertTable_Click(object sender, RoutedEventArgs e)
+        {
+            ConvertTable();
         }
     }
 }
