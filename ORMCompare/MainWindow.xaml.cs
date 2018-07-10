@@ -340,25 +340,43 @@ namespace ORMCompare
 
         private void BtnChart_Click(object sender, RoutedEventArgs e)
         {
-            ChartStatistics model = new ChartStatistics();
-            List<long> ado = new List<long>();
-            List<long> entity = new List<long>();
-            List<long> petapoco = new List<long>();
-            List<long> drapper = new List<long>();
-
-            foreach (var item in dataGridList)
+            if (dataGridList.Count > 1)
             {
-                ado.Add(item.ADO);
-                entity.Add(item.EntityFramework);
-                petapoco.Add(item.PetaPoco);
-                drapper.Add(item.Drapper);
+                ChartStatistics model = new ChartStatistics();
+                List<long> ado = new List<long>();
+                List<long> entity = new List<long>();
+                List<long> petapoco = new List<long>();
+                List<long> drapper = new List<long>();
+
+                foreach (var item in dataGridList)
+                {
+                    ado.Add(item.ADO);
+                    entity.Add(item.EntityFramework);
+                    petapoco.Add(item.PetaPoco);
+                    drapper.Add(item.Drapper);
+                }
+                model.ADO = ado;
+                model.EntityFramework = entity;
+                model.PetaPoco = petapoco;
+                model.Drapper = drapper;
+                TimeChart chart = new TimeChart(model);
+                chart.ShowDialog();
             }
-            model.ADO = ado;
-            model.EntityFramework = entity;
-            model.PetaPoco = petapoco;
-            model.Drapper = drapper;
-            TimeChart chart = new TimeChart(model);
-            chart.ShowDialog();
+            ///
+            else if(dataGridList.Count==1)
+            {
+                TimeChartModel mod = new TimeChartModel();
+                mod.ChartData = new List<TimeModel>();
+                mod.ChartData.Add(new TimeModel { Name = "ADO", Time = dataGridList[0].ADO });
+                mod.ChartData.Add(new TimeModel { Name = "EntityFramework", Time = dataGridList[0].EntityFramework });
+                mod.ChartData.Add(new TimeModel { Name = "PetaPoco", Time = dataGridList[0].PetaPoco });
+                mod.ChartData.Add(new TimeModel { Name = "Drapper", Time = dataGridList[0].Drapper });
+                TimeChart ch = new TimeChart(mod);
+                ch.ShowDialog();
+            }
+
+
+
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)

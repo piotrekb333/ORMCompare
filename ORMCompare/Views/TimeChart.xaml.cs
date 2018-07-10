@@ -31,7 +31,13 @@ namespace ORMCompare.Views
             var colSeries = new ColumnSeries();
             Axis axis = new Axis();
             axis.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            Axis axisy = new Axis();
+            axisy.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            axisy.FontSize = 15;
             axis.Labels = new List<string>();
+            axis.MinRange = 0;
+           
+            axis.FontSize = 15;
             chartModel = model;
             CharSeries = new SeriesCollection();
             colSeries.Values = new ChartValues<long>();
@@ -44,6 +50,7 @@ namespace ORMCompare.Views
             CharSeries.Add(colSeries);
             this.lvTimeChart.Series = CharSeries;
             this.lvTimeChart.AxisX = new AxesCollection { axis };
+            this.lvTimeChart.AxisY = new AxesCollection { axisy };
         }
 
         public TimeChart(ChartStatistics model)
@@ -111,7 +118,17 @@ namespace ORMCompare.Views
             Axis axis = new Axis();
             axis.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
             axis.Labels = tests.ToList();
+            axis.MinRange = 0;
+            axis.FontSize = 15;
+
+            Axis axisy = new Axis();
+            axisy.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            axisy.FontSize = 15;
+            axisy.MinRange = 0;
+            axisy.MinValue = 0;
+            this.lvTimeChart.LoadLegend();
             this.lvTimeChart.AxisX = new AxesCollection { axis };
+            this.lvTimeChart.AxisY = new AxesCollection { axisy };
             /*
             var SeriesCollection = new SeriesCollection
             {
@@ -125,6 +142,7 @@ namespace ORMCompare.Views
             };
             */
         }
+
 
     }
 }

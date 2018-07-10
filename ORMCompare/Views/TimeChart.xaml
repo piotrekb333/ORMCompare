@@ -9,6 +9,6 @@
         mc:Ignorable="d"
         Title="TimeChart" Height="450" Width="800">
     <Grid Name="chartGrid">
-        <lvc1:CartesianChart Name="lvTimeChart"/>
+        <lvc1:CartesianChart Name="lvTimeChart" Margin="15"/>
     </Grid>
 </Window>
