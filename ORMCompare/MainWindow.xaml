@@ -123,8 +123,9 @@
                     </ComboBox>
                     <Button Grid.Column="1"  Grid.Row="0" Content="GENERATE RESULT" Name="BtnGenerateResult" Click="BtnGenerateResult_Click"/>
                     <Button Grid.Column="0"  Grid.Row="1" Content="CLEAR TABLE" Name="BtnDelete" Click="BtnDelete_Click"/>
+                    <Button Grid.Column="1"  Grid.Row="1" Content="CLEAR RECORD" Name="BtnDeleteRecord" Click="BtnDeleteRecord_Click"/>
 
-                    <Button Grid.Column="1"  Grid.Row="1" Content="GENERATE CHART" Name="BtnChart" Click="BtnChart_Click" />
+                    <Button Grid.Column="1"  Grid.Row="2" Content="GENERATE CHART" Name="BtnChart" Click="BtnChart_Click" />
                     <Button Grid.Column="0"  Grid.Row="2" Content="CONVERT TO CSV" Name="BtnConvertTable" Click="BtnConvertTable_Click" />
                     <DataGrid Name="DGTestResult"
                         Grid.Row="3"

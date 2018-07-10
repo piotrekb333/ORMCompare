@@ -370,5 +370,23 @@ namespace ORMCompare
         {
             ConvertTable();
         }
+
+        private void BtnDeleteRecord_Click(object sender, RoutedEventArgs e)
+        {
+            var res=DGTestResult.SelectedItems;
+            List<Guid> toDelete = new List<Guid>();
+            foreach(var item in res)
+            {
+                DataGridResultModel resItem = item as DataGridResultModel;
+                if (resItem == null)
+                    continue;
+                toDelete.Add(resItem.GuidId);
+            }
+            dataGridList.Where(m => toDelete.Contains(m.GuidId)).ToList().ForEach(m =>
+            {
+                dataGridList.Remove(m);
+            });
+
+        }
     }
 }
