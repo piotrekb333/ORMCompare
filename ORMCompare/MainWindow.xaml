@@ -130,7 +130,9 @@
                     <DataGrid Name="DGTestResult"
                         Grid.Row="3"
                               Grid.ColumnSpan="2"
-                              Grid.RowSpan="3"
+                              Grid.RowSpan="3" 
+                              ColumnWidth="*"
+                              AutoGeneratingColumn="DGTestResult_AutoGeneratingColumn" 
                               />
                 </Grid>
             </TabItem>

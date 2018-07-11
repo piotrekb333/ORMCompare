@@ -77,6 +77,7 @@ namespace ORMCompare
             InitTablesInfo();
             dataGridList = new ObservableCollection<DataGridResultModel>();
             testService = new TestService();
+
         }
 
 
@@ -405,6 +406,14 @@ namespace ORMCompare
                 dataGridList.Remove(m);
             });
 
+        }
+
+        private void DGTestResult_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "GuidId")
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
