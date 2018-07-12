@@ -273,6 +273,11 @@ namespace ORMCompare
             sw.Close();
         }
 
+        private void CheckExistsDatabase()
+        {
+
+        }
+
         //EVENTS
         private void BtnInsertRecords_Click(object sender, RoutedEventArgs e)
         {

@@ -94,6 +94,7 @@
     <Compile Include="Services\Interfaces\IDepartmentRepository.cs" />
     <Compile Include="Services\Interfaces\IEmployeeRepository.cs" />
     <Compile Include="Services\Interfaces\IEmployeeTitleRepository.cs" />
+    <Compile Include="Services\Interfaces\IManageDatabaseRepository.cs" />
     <Compile Include="Services\Interfaces\IRepository.cs" />
     <Compile Include="Services\ManageDatabase\ManageDatabaseService.cs" />
     <Compile Include="Services\Repositories\DepartmentEmployeeRepository.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Services\Repositories\DepartmentRepository.cs" />
     <Compile Include="Services\Repositories\EmployeeRepository.cs" />
     <Compile Include="Services\Repositories\EmployeeTitleRepository.cs" />
+    <Compile Include="Services\Repositories\ManageDatabaseRepository.cs" />
     <Compile Include="Services\Repositories\Repository.cs" />
     <Compile Include="Services\SettingsManager.cs" />
     <Compile Include="Services\TestService\TestService.cs" />
