@@ -37,11 +37,22 @@ namespace ORMCompare
     {
         ObservableCollection<DataGridResultModel> dataGridList;
         TestService testService;
+        IManageDatabaseRepository databaseManagment;
         public MainWindow()
         {
             InitializeComponent();
-
-
+            LoadDatabaseSettings();
+            databaseManagment = new ManageDatabaseRepository(new ORMContext());
+            if (!databaseManagment.CheckIfExistsDatabase())
+            {
+                MessageBox.Show("Database doesn't exists! Please type database settings in Tab 'Database and click CREATE'");
+            }
+            else
+            {
+                InitAll();
+            }
+            //CheckDatabase();            
+            /*
             TestTimeMethods s = new TestTimeMethods(EnumsClass.ORMTool.PetaPoco);
             TestTimeMethods s1 = new TestTimeMethods(EnumsClass.ORMTool.ADOSqlClient);
             TestTimeMethods s2 = new TestTimeMethods(EnumsClass.ORMTool.Drapper);
@@ -59,6 +70,7 @@ namespace ORMCompare
             mod.ChartData.Add(new TimeModel { Name = "ADOSql", Time = res2 });
             mod.ChartData.Add(new TimeModel { Name = "Drapper", Time = res3 });
             mod.ChartData.Add(new TimeModel { Name = "EntityFramework", Time = res4 });
+            */
            // TimeChart ch = new TimeChart(mod);
            // ch.ShowDialog();
             /*
@@ -74,14 +86,23 @@ namespace ORMCompare
             d.DeleteAllEmployeeTitles();
             */
             //d.InsertRandomEmployeeTitle(100000);
+        }
+
+        private void InitAll()
+        {
             FillCbMethods();
-            LoadDatabaseSettings();
             InitTablesInfo();
             dataGridList = new ObservableCollection<DataGridResultModel>();
             testService = new TestService();
-
         }
 
+        private void CheckDatabase()
+        {
+            if (databaseManagment.CheckDatabase())
+            {
+                InitAll();
+            }
+        }
 
         private void InitTablesInfo()
         {
@@ -421,6 +442,11 @@ namespace ORMCompare
             {
                 e.Cancel = true;
             }
+        }
+
+        private void BtnGenerateDatabase_Click(object sender, RoutedEventArgs e)
+        {
+            CheckDatabase();
         }
     }
 }

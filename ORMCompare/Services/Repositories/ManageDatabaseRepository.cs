@@ -25,5 +25,17 @@ namespace ORMCompare.Services.Repositories
             }
             return true;
         }
+
+        public bool CheckIfExistsDatabase()
+        {
+            try
+            {
+                return _context.Database.Exists();
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

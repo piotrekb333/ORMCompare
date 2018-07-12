@@ -9,5 +9,6 @@ namespace ORMCompare.Services.Interfaces
     public interface IManageDatabaseRepository
     {
         bool CheckDatabase();
+        bool CheckIfExistsDatabase();
     }
 }
