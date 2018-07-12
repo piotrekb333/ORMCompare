@@ -26,6 +26,7 @@ using ORMCompare.Services.TestService;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace ORMCompare
 {
@@ -39,7 +40,8 @@ namespace ORMCompare
         public MainWindow()
         {
             InitializeComponent();
-            
+
+
             TestTimeMethods s = new TestTimeMethods(EnumsClass.ORMTool.PetaPoco);
             TestTimeMethods s1 = new TestTimeMethods(EnumsClass.ORMTool.ADOSqlClient);
             TestTimeMethods s2 = new TestTimeMethods(EnumsClass.ORMTool.Drapper);

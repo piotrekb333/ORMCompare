@@ -31,7 +31,8 @@ namespace ORM.PetaPoco.Repositories.Implementations
             using (dbConnection)
             {
                 string query = "Select avg(salary) from employees";
-                return db.ExecuteScalar<decimal>(query);
+                var res= db.ExecuteScalar<decimal?>(query);
+                return res ?? 0;
             }
         }
 

@@ -86,14 +86,17 @@ namespace ORMCompare.Services
             IEmployeeRepository repoEmp = new EmployeeRepository();
             var first= repoEmp.GetFirst();
             var watch = System.Diagnostics.Stopwatch.StartNew();
-            repo.UpdateEmployee(first.Id, new ORMSettings.Models.Employee
+            if (first != null)
             {
-                FirstName="update",
-                Birthday=first.Birthday,
-                EmployeeTitleId=first.EmployeeTitleId,
-                LastName=first.LastName,
-                Salary=first.Salary
-            });
+                repo.UpdateEmployee(first.Id, new ORMSettings.Models.Employee
+                {
+                    FirstName = "update",
+                    Birthday = first.Birthday,
+                    EmployeeTitleId = first.EmployeeTitleId,
+                    LastName = first.LastName,
+                    Salary = first.Salary
+                });
+            }
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
             return elapsedMs;
@@ -104,7 +107,8 @@ namespace ORMCompare.Services
             IEmployeeRepository repoEmp = new EmployeeRepository();
             var first = repoEmp.GetFirst();
             var watch = System.Diagnostics.Stopwatch.StartNew();
-            repo.GetEmployeeById(first.Id);
+            if(first!=null)
+               repo.GetEmployeeById(first.Id);
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
             return elapsedMs;

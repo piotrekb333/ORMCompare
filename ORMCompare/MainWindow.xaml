@@ -128,7 +128,7 @@
 
                     <Button Grid.Column="1"  Grid.Row="2" Content="GENERATE CHART" Name="BtnChart" Click="BtnChart_Click" />
                     <Button Grid.Column="0"  Grid.Row="2" Content="CONVERT TO CSV" Name="BtnConvertTable" Click="BtnConvertTable_Click" />
-                    <Label Grid.Column="0"  Grid.Row="3" Grid.ColumnSpan="2" Content="Your Title goes here"/>
+                    <Label Grid.Column="0"  Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" Content="Tests Results (Time in milliseconds)"/>
 
                     <DataGrid Name="DGTestResult"
                         Grid.Row="4"
