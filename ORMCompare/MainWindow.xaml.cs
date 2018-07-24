@@ -349,10 +349,11 @@ namespace ORMCompare
             DatabaseSettingsModel model = new DatabaseSettingsModel();
             model.Database = txtDatabase.Text;
             model.Ip = txtIp.Text;
-            model.Port = txtPassword.Text;
+            model.Port = txtPort.Text;
             model.Login = txtLogin.Text;
             model.Password = txtPassword.Text;
             SaveDatabaseSettings(model);
+            MessageBox.Show("Changes was saved!");
         }
 
         private void BtnGenerateResult_Click(object sender, RoutedEventArgs e)
@@ -446,7 +447,18 @@ namespace ORMCompare
 
         private void BtnGenerateDatabase_Click(object sender, RoutedEventArgs e)
         {
-            CheckDatabase();
+            databaseManagment.CheckDatabase();
+            //CheckDatabase();
+        }
+
+        private void BtnTestConnection_Click(object sender, RoutedEventArgs e)
+        {
+            if (databaseManagment.CheckDatabase())
+                MessageBox.Show("OK");
+            else
+            {
+                MessageBox.Show("Fail!");
+            }
         }
     }
 }

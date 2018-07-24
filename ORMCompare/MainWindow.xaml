@@ -119,7 +119,7 @@
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
-                    <ComboBox Name="cbMethod">
+                    <ComboBox Text="Choose test" IsEditable="True" Name="cbMethod">
 
                     </ComboBox>
                     <Button Grid.Column="1"  Grid.Row="0" Content="GENERATE RESULT" Name="BtnGenerateResult" Click="BtnGenerateResult_Click"/>
@@ -166,8 +166,20 @@
                     <TextBox Grid.Column="1" Grid.Row="2" Name="txtDatabase"/>
                     <TextBox Grid.Column="1" Grid.Row="3" Name="txtLogin"/>
                     <TextBox Grid.Column="1" Grid.Row="4" Name="txtPassword"/>
-                    <Button Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="6" Content="SAVE" Name="BtnSaveDatabaseSettings" Click="BtnSaveDatabaseSettings_Click"/>
-                    <Button Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="6" Content="CREATE DATABASE" Name="BtnGenerateDatabase" Click="BtnGenerateDatabase_Click"/>
+
+                    <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Column="0" Grid.ColumnSpan="1"  Content="SAVE" Name="BtnSaveDatabaseSettings" Click="BtnSaveDatabaseSettings_Click"/>
+                        <Button Grid.Column="1" Grid.ColumnSpan="1"  Content="TEST CONNECTION" Name="BtnTestConnection" Click="BtnTestConnection_Click"/>
+                        <Button Grid.Column="2" Grid.ColumnSpan="1"  Content="CREATE DATABASE" Name="BtnGenerateDatabase" Click="BtnGenerateDatabase_Click"/>
+                    </Grid>
 
                 </Grid>
             </TabItem>

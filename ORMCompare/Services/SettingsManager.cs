@@ -16,7 +16,7 @@ namespace ORMCompare.Services
             model.Database = ORMSettings.HelperDatabaseSettings.GetDatabase();
             model.Port = ORMSettings.HelperDatabaseSettings.GetPort();
             model.Login = ORMSettings.HelperDatabaseSettings.GetLogin();
-            model.Password = ORMSettings.HelperDatabaseSettings.GetPort();
+            model.Password = ORMSettings.HelperDatabaseSettings.GetPassword();
             return model;
         }
 
