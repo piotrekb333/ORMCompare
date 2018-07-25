@@ -88,7 +88,7 @@ namespace ORMCompare.Views
 
             SeriesCollection.Add(new LineSeries
             {
-                Title="ADO",
+                Title=".NET ADO",
                 Values = adoVal,
                 PointGeometry = null
             });

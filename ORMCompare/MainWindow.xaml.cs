@@ -35,7 +35,7 @@ namespace ORMCompare
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<DataGridResultModel> dataGridList;
+        public ObservableCollection<DataGridResultModel> dataGridList;
         TestService testService;
         IManageDatabaseRepository databaseManagment;
         public MainWindow()
@@ -397,8 +397,8 @@ namespace ORMCompare
             {
                 TimeChartModel mod = new TimeChartModel();
                 mod.ChartData = new List<TimeModel>();
-                mod.ChartData.Add(new TimeModel { Name = "ADO", Time = dataGridList[0].ADO });
-                mod.ChartData.Add(new TimeModel { Name = "EntityFramework", Time = dataGridList[0].EntityFramework });
+                mod.ChartData.Add(new TimeModel { Name = ".NET ADO", Time = dataGridList[0].ADO });
+                mod.ChartData.Add(new TimeModel { Name = "Entity Framework", Time = dataGridList[0].EntityFramework });
                 mod.ChartData.Add(new TimeModel { Name = "PetaPoco", Time = dataGridList[0].PetaPoco });
                 mod.ChartData.Add(new TimeModel { Name = "Drapper", Time = dataGridList[0].Drapper });
                 TimeChart ch = new TimeChart(mod);

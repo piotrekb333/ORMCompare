@@ -136,7 +136,17 @@
                               Grid.RowSpan="3" 
                               ColumnWidth="*"
                               AutoGeneratingColumn="DGTestResult_AutoGeneratingColumn" 
-                              />
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding dataGridList}"
+                              >
+                        <DataGrid.Columns >
+                            <DataGridTextColumn Header=".NET ADO" Binding="{Binding ADO}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Entity Framework" Binding="{Binding EntityFramework}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Drapper" Binding="{Binding Drapper}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="PetaPoco" Binding="{Binding PetaPoco}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Database Settings" >

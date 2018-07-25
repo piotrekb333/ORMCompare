@@ -7,7 +7,7 @@
         xmlns:lvc="clr-namespace:LiveCharts;assembly=LiveCharts"
         xmlns:lvc1="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="TimeChart" Height="450" Width="800">
+        Title="TimeChart" Height="450" Width="1100">
     <Grid Name="chartGrid">
         <lvc1:CartesianChart Name="lvTimeChart" Margin="15" LegendLocation="Top"/>
     </Grid>
