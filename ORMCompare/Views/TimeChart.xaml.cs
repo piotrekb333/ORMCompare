@@ -31,9 +31,11 @@ namespace ORMCompare.Views
             var colSeries = new ColumnSeries();
             Axis axis = new Axis();
             axis.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+
             Axis axisy = new Axis();
             axisy.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
             axisy.FontSize = 15;
+            axisy.Title = "Czas [ms]";
             axis.Labels = new List<string>();
             axis.MinRange = 0;
            
@@ -61,7 +63,8 @@ namespace ORMCompare.Views
             string[] tests= new string[numTest];
             for(int i = 0; i < numTest; i++)
             {
-                tests[i] = "Test " + i.ToString();
+                int v = i+1;
+                tests[i] = "Test " + v.ToString();
             }
 
             ChartValues<long> entityVal = new ChartValues<long>();
@@ -126,6 +129,7 @@ namespace ORMCompare.Views
             axisy.FontSize = 15;
             axisy.MinRange = 0;
             axisy.MinValue = 0;
+            axisy.Title = "Czas [ms]";
             this.lvTimeChart.LoadLegend();
             this.lvTimeChart.AxisX = new AxesCollection { axis };
             this.lvTimeChart.AxisY = new AxesCollection { axisy };
