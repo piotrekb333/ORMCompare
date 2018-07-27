@@ -70,6 +70,12 @@ namespace ORMCompare.Services.TestService
                     toReturn.Drapper = new TestTimeMethods(EnumsClass.ORMTool.Drapper).ExistsSalaryTest();
                     toReturn.PetaPoco = new TestTimeMethods(EnumsClass.ORMTool.PetaPoco).ExistsSalaryTest();
                     break;
+                case "Union Employees":
+                    toReturn.ADO = new TestTimeMethods(EnumsClass.ORMTool.ADOSqlClient).UnionEmployees();
+                    toReturn.EntityFramework = new TestTimeMethods(EnumsClass.ORMTool.EntityFramework).UnionEmployees();
+                    toReturn.Drapper = new TestTimeMethods(EnumsClass.ORMTool.Drapper).UnionEmployees();
+                    toReturn.PetaPoco = new TestTimeMethods(EnumsClass.ORMTool.PetaPoco).UnionEmployees();
+                    break;
             }
             return toReturn;
         }

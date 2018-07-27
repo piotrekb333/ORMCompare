@@ -217,6 +217,47 @@ group by d.Id,d.Name";
             }
         }
 
+        public IEnumerable<Employee> UnionEmployees()
+        {
+            string queryString = @"select * from Employees where Salary < 3000
+union 
+select * from Employees where Salary > 6000";
+            List<Employee> emp = new List<Employee>();
+            using (SqlConnection connection =
+                new SqlConnection(connectionString))
+            {
+
+                SqlCommand command = new SqlCommand(queryString, connection);
+                connection.Open();
+                var res = command.ExecuteReader();
+                while (res.Read())
+                {
+                    int id = int.Parse(res["Id"].ToString());
+                    string firstName = res["FirstName"].ToString();
+                    string lastName = res["LastName"].ToString();
+                    DateTime dateBirthday = Convert.ToDateTime(res["BirthDay"]);
+                    int? titleId = null;
+                    int help;
+                    if (int.TryParse(res["EmployeeTitleId"]?.ToString(), out help))
+                    {
+                        titleId = help;
+                    }
+                    emp.Add(new Employee
+                    {
+                        FirstName = firstName,
+                        LastName = lastName,
+                        Birthday = dateBirthday,
+                        EmployeeTitleId = titleId,
+                        Id = id
+
+                    });
+                }
+                connection.Close();
+
+            }
+            return emp;
+        }
+
         public bool UpdateEmployee(int id, Employee model)
         {
             try

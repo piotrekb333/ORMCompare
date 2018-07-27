@@ -122,6 +122,17 @@ namespace ORM.EntityFramework.Repositories.Implementations
             }
         }
 
+        public IEnumerable<Employee> UnionEmployees()
+        {
+            List<Employee> lastOutput = new List<Employee>();
+            var result = context.Employees.Where(m=>m.Salary<3000).Union(context.Employees.Where(z=>z.Salary>6000)).ToList();
+            foreach (var item in result)
+            {
+                lastOutput.Add(new Employee { FirstName = item.FirstName, LastName = item.LastName, Birthday = item.Birthday, EmployeeTitleId = item.EmployeeTitleId, Id = item.Id });
+            }
+            return lastOutput;
+        }
+
         public bool UpdateEmployee(int id, Employee model)
         {
             var emp=context.Employees.FirstOrDefault(m => m.Id == id);

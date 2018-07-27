@@ -124,6 +124,15 @@ namespace ORMCompare.Services
             var elapsedMs = watch.ElapsedMilliseconds;
             return elapsedMs;
         }
-        
+
+        public long UnionEmployees()
+        {
+            IEmployeeRepository repoEmp = new EmployeeRepository();
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            repo.UnionEmployees();
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            return elapsedMs;
+        }
     }
 }

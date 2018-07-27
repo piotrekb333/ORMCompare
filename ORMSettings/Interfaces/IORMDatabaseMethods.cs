@@ -18,6 +18,6 @@ namespace ORMSettings.Interfaces
         bool UpdateEmployee(int id, Employee model);
         Employee GetEmployeeById(int id);
         bool ExistsSalary(decimal salary);
-
+        IEnumerable<Employee> UnionEmployees();
     }
 }

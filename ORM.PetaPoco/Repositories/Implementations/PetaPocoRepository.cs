@@ -112,6 +112,18 @@ group by d.Id,d.Name";
             return true;
         }
 
+        public IEnumerable<Employee> UnionEmployees()
+        {
+            using (dbConnection)
+            {
+                string query = @"select * from Employees where Salary < 3000
+union 
+select * from Employees where Salary > 6000";
+                var res= db.Query<Employee>(query).ToList();            
+                return res;
+            }
+        }
+
         public bool UpdateEmployee(int id, Employee model)
         {
             using (dbConnection)
