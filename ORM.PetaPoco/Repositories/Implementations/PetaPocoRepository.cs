@@ -80,7 +80,8 @@ namespace ORM.PetaPoco.Repositories.Implementations
             {
                 string query = @"select d.id as DepartmentId,d.Name as DepartmentName, sum(e.Salary) as SalarySum from DepartmentEmployees de inner join Employees e on de.EmployeeId=e.Id inner join Departments d on de.DepartmentId=d.Id
 group by d.Id,d.Name";
-                return db.Query<DepartmentEmployeeSalary>(query);
+                var result = db.Query<DepartmentEmployeeSalary>(query).ToList();
+                return result;
             }
         }
 
