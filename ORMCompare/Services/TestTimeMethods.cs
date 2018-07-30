@@ -143,5 +143,14 @@ namespace ORMCompare.Services
             var elapsedMs = watch.ElapsedMilliseconds;
             return elapsedMs;
         }
+        public long GetEmployeesWithTitle()
+        {
+            IEmployeeRepository repoEmp = new EmployeeRepository();
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            repo.GetEmployeesWithTitle();
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            return elapsedMs;
+        }
     }
 }

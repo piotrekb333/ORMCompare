@@ -189,6 +189,37 @@ group by d.Id,d.Name";
             return emp.FirstOrDefault();
         }
 
+        public IEnumerable<EmployeeTitleViewModel> GetEmployeesWithTitle()
+        {
+            string queryString = "select firstname,lastname,title from Employees e inner join EmployeeTitles t on e.EmployeeTitleId=t.Id ";
+            List<EmployeeTitleViewModel> emp = new List<EmployeeTitleViewModel>();
+            using (SqlConnection connection =
+                new SqlConnection(connectionString))
+            {
+
+                SqlCommand command = new SqlCommand(queryString, connection);
+                connection.Open();
+                var res = command.ExecuteReader();
+                while (res.Read())
+                {
+                    string firstName = res["firstname"].ToString();
+                    string lastName = res["lastname"].ToString();
+                    string title= res["title"].ToString();
+
+                    emp.Add(new EmployeeTitleViewModel
+                    {
+                        FirstName = firstName,
+                        LastName = lastName,
+                        Title = title
+
+                    });
+                }
+                connection.Close();
+
+            }
+            return emp;
+        }
+
         public InfoDatabaseModel GetInfoDatabase()
         {
             string queryString = "select (select count(*) from Departments) as DepartmentsCount , (select count(*) from Employees) as EmployeesCount, (select count(*) from EmployeeTitles) as TitlesCount";

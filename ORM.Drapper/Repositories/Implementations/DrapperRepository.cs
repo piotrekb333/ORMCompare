@@ -92,6 +92,15 @@ group by d.Id,d.Name";
             }
         }
 
+        public IEnumerable<EmployeeTitleViewModel> GetEmployeesWithTitle()
+        {
+            using (connection)
+            {
+                string query = "select firstname,lastname,title from Employees e inner join EmployeeTitles t on e.EmployeeTitleId=t.Id ";
+                return connection.Query<EmployeeTitleViewModel>(query);
+            }
+        }
+
         public InfoDatabaseModel GetInfoDatabase()
         {
             using (connection)

@@ -102,6 +102,23 @@ namespace ORM.EntityFramework.Repositories.Implementations
             return output;
         }
 
+        public IEnumerable<EmployeeTitleViewModel> GetEmployeesWithTitle()
+        {
+            List<EmployeeTitleViewModel> output = new List<EmployeeTitleViewModel>();
+            var query = context.Employees // your starting point - table in the "from" statement
+                .Join(context.EmployeeTitles, // the source table of the inner join
+                    post => post
+                        .EmployeeTitleId, // Select the primary key (the first part of the "on" clause in an sql "join" statement)
+                    meta => meta.Id, // Select the foreign key (the second part of the "on" clause)
+                    (post, meta) => new {Post = post, Meta = meta}).ToList();
+            query.ForEach(m =>
+            {
+                output.Add(new EmployeeTitleViewModel{FirstName = m.Post.FirstName,LastName = m.Post.LastName,Title = m.Meta.Title});
+            });
+
+            return output;
+        }
+
         public InfoDatabaseModel GetInfoDatabase()
         {
             var mod = new InfoDatabaseModel();

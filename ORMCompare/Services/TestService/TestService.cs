@@ -82,6 +82,12 @@ namespace ORMCompare.Services.TestService
                     toReturn.Drapper = new TestTimeMethods(EnumsClass.ORMTool.Drapper).GetDatabaseInfo();
                     toReturn.PetaPoco = new TestTimeMethods(EnumsClass.ORMTool.PetaPoco).GetDatabaseInfo();
                     break;
+                case "Employees with title":
+                    toReturn.ADO = new TestTimeMethods(EnumsClass.ORMTool.ADOSqlClient).GetEmployeesWithTitle();
+                    toReturn.EntityFramework = new TestTimeMethods(EnumsClass.ORMTool.EntityFramework).GetEmployeesWithTitle();
+                    toReturn.Drapper = new TestTimeMethods(EnumsClass.ORMTool.Drapper).GetEmployeesWithTitle();
+                    toReturn.PetaPoco = new TestTimeMethods(EnumsClass.ORMTool.PetaPoco).GetEmployeesWithTitle();
+                    break;
             }
             return toReturn;
         }
