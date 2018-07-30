@@ -189,6 +189,37 @@ group by d.Id,d.Name";
             return emp.FirstOrDefault();
         }
 
+        public InfoDatabaseModel GetInfoDatabase()
+        {
+            string queryString = "select (select count(*) from Departments) as DepartmentsCount , (select count(*) from Employees) as EmployeesCount, (select count(*) from EmployeeTitles) as TitlesCount";
+            List<InfoDatabaseModel> emp = new List<InfoDatabaseModel>();
+            using (SqlConnection connection =
+                new SqlConnection(connectionString))
+            {
+
+                SqlCommand command = new SqlCommand(queryString, connection);
+
+
+                connection.Open();
+                var res = command.ExecuteReader();
+                while (res.Read())
+                {
+                    int dep = int.Parse(res["DepartmentsCount"].ToString());
+                    int empc = int.Parse(res["EmployeesCount"].ToString());
+                    int tit = int.Parse(res["TitlesCount"].ToString());
+                    emp.Add(new InfoDatabaseModel
+                    {
+                        DepartmentsCount = dep,
+                        EmployeesCount = empc,
+                        TitlesCount = tit
+                    });
+                }
+                connection.Close();
+
+            }
+            return emp.FirstOrDefault();
+        }
+
         public bool InsertEmployee(Employee model)
         {
             try

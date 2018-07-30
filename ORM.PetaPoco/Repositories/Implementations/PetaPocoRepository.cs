@@ -96,6 +96,14 @@ group by d.Id,d.Name";
             }
         }
 
+        public InfoDatabaseModel GetInfoDatabase()
+        {
+            using (dbConnection)
+            {
+                return db.SingleOrDefault<InfoDatabaseModel>(@"select (select count(*) from Departments) as DepartmentsCount , (select count(*) from Employees) as EmployeesCount, (select count(*) from EmployeeTitles) as TitlesCount");
+            }
+        }
+
         public bool InsertEmployee(Employee model)
         {
             using (dbConnection)

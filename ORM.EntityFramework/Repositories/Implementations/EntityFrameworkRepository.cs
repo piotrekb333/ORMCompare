@@ -102,6 +102,16 @@ namespace ORM.EntityFramework.Repositories.Implementations
             return output;
         }
 
+        public InfoDatabaseModel GetInfoDatabase()
+        {
+            var mod = new InfoDatabaseModel();
+            mod.TitlesCount= context.EmployeeTitles.Count();
+            mod.DepartmentsCount = context.Departments.Count();
+            mod.EmployeesCount = context.Employees.Count();
+
+            return mod;
+        }
+
         public bool InsertEmployee(ORMSettings.Models.Employee model)
         {
             try

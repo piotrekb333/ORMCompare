@@ -138,6 +138,7 @@ namespace ORMCompare
             cbMethod.Items.Add("Get Employee By Id");
             cbMethod.Items.Add("Exists Salary");
             cbMethod.Items.Add("Union Employees");
+            cbMethod.Items.Add("Database info");
         }
 
         private void InsertRecords()

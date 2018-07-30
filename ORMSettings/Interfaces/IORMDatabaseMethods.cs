@@ -19,5 +19,6 @@ namespace ORMSettings.Interfaces
         Employee GetEmployeeById(int id);
         bool ExistsSalary(decimal salary);
         IEnumerable<Employee> UnionEmployees();
+        InfoDatabaseModel GetInfoDatabase();
     }
 }
