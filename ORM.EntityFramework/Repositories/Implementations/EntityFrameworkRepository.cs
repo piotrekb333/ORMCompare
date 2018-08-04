@@ -47,6 +47,7 @@ namespace ORM.EntityFramework.Repositories.Implementations
         public bool ExistsSalary(decimal salary)
         {
             return context.Employees.Any(m => m.Salary == salary);
+
         }
 
         public IEnumerable<Employee> GetAllEmployee()
