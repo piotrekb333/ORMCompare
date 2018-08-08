@@ -68,6 +68,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ApplicationModels\ChartStatistics.cs" />
+    <Compile Include="ApplicationModels\ChartStatisticsDoubleModel.cs" />
     <Compile Include="ApplicationModels\DatabaseSettingsModel.cs" />
     <Compile Include="ApplicationModels\DataGridResultModel.cs" />
     <Compile Include="ApplicationModels\TimeChartManyModel.cs" />

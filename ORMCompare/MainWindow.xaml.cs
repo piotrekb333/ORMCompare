@@ -383,10 +383,10 @@ namespace ORMCompare
 
                 foreach (var item in dataGridList)
                 {
-                    ado.Add(item.ADO);
-                    entity.Add(item.EntityFramework);
-                    petapoco.Add(item.PetaPoco);
-                    drapper.Add(item.Drapper);
+                    ado.Add((long)item.ADO);
+                    entity.Add((long)item.EntityFramework);
+                    petapoco.Add((long)item.PetaPoco);
+                    drapper.Add((long)item.Drapper);
                 }
                 model.ADO = ado;
                 model.EntityFramework = entity;
@@ -400,10 +400,10 @@ namespace ORMCompare
             {
                 TimeChartModel mod = new TimeChartModel();
                 mod.ChartData = new List<TimeModel>();
-                mod.ChartData.Add(new TimeModel { Name = ".NET ADO", Time = dataGridList[0].ADO });
-                mod.ChartData.Add(new TimeModel { Name = "Entity Framework", Time = dataGridList[0].EntityFramework });
-                mod.ChartData.Add(new TimeModel { Name = "PetaPoco", Time = dataGridList[0].PetaPoco });
-                mod.ChartData.Add(new TimeModel { Name = "Drapper", Time = dataGridList[0].Drapper });
+                mod.ChartData.Add(new TimeModel { Name = ".NET ADO", Time = (long)dataGridList[0].ADO });
+                mod.ChartData.Add(new TimeModel { Name = "Entity Framework", Time = (long)dataGridList[0].EntityFramework });
+                mod.ChartData.Add(new TimeModel { Name = "PetaPoco", Time = (long)dataGridList[0].PetaPoco });
+                mod.ChartData.Add(new TimeModel { Name = "Drapper", Time = (long)dataGridList[0].Drapper });
                 TimeChart ch = new TimeChart(mod);
                 ch.ShowDialog();
             }
@@ -461,6 +461,32 @@ namespace ORMCompare
             else
             {
                 MessageBox.Show("Fail!");
+            }
+        }
+
+        private void BtnChartDouble_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGridList.Count > 1)
+            {
+                ChartStatisticsDoubleModel model = new ChartStatisticsDoubleModel();
+                List<double> ado = new List<double>();
+                List<double> entity = new List<double>();
+                List<double> petapoco = new List<double>();
+                List<double> drapper = new List<double>();
+
+                foreach (var item in dataGridList)
+                {
+                    ado.Add(item.ADO);
+                    entity.Add(item.EntityFramework);
+                    petapoco.Add(item.PetaPoco);
+                    drapper.Add(item.Drapper);
+                }
+                model.ADO = ado;
+                model.EntityFramework = entity;
+                model.PetaPoco = petapoco;
+                model.Drapper = drapper;
+                TimeChart chart = new TimeChart(model);
+                chart.ShowDialog();
             }
         }
     }

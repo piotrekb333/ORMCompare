@@ -138,7 +138,97 @@ namespace ORMCompare.Views
             */
         }
 
+        public TimeChart(ChartStatisticsDoubleModel model)
+        {
+            InitializeComponent();
+            var SeriesCollection = new SeriesCollection();
+            var numTest = model.EntityFramework.Count;
+            string[] tests = new string[numTest];
+            for (int i = 0; i < numTest; i++)
+            {
+                int v = i + 1;
+                tests[i] = "Test " + v.ToString();
+            }
 
+            ChartValues<double> entityVal = new ChartValues<double>();
+            ChartValues<double> adoVal = new ChartValues<double>();
+            ChartValues<double> petapocoVal = new ChartValues<double>();
+            ChartValues<double> drapperVal = new ChartValues<double>();
+            model.EntityFramework.ForEach(m =>
+            {
+                entityVal.Add(m);
+            });
+
+            model.ADO.ForEach(m =>
+            {
+                adoVal.Add(m);
+            });
+            model.PetaPoco.ForEach(m =>
+            {
+                petapocoVal.Add(m);
+            });
+            model.Drapper.ForEach(m =>
+            {
+                drapperVal.Add(m);
+            });
+
+            SeriesCollection.Add(new LineSeries
+            {
+                Title = ".NET ADO",
+                Values = adoVal,
+                PointGeometry = null
+            });
+
+            SeriesCollection.Add(new LineSeries
+            {
+                Title = "Entity Framework",
+                Values = entityVal,
+                PointGeometry = null
+            });
+
+            SeriesCollection.Add(new LineSeries
+            {
+                Title = "PetaPoco",
+                Values = petapocoVal,
+                PointGeometry = null
+            });
+
+            SeriesCollection.Add(new LineSeries
+            {
+                Title = "Drapper",
+                Values = drapperVal,
+                PointGeometry = null
+            });
+
+            this.lvTimeChart.Series = SeriesCollection;
+            Axis axis = new Axis();
+            axis.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            axis.Labels = tests.ToList();
+            axis.MinRange = 0;
+            axis.FontSize = 15;
+
+            Axis axisy = new Axis();
+            axisy.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            axisy.FontSize = 15;
+            axisy.MinRange = 0;
+            axisy.MinValue = 0;
+            axisy.Title = "Czas [ms]";
+            this.lvTimeChart.LoadLegend();
+            this.lvTimeChart.AxisX = new AxesCollection { axis };
+            this.lvTimeChart.AxisY = new AxesCollection { axisy };
+            /*
+            var SeriesCollection = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Title = "Series 2",
+                    Values = new ChartValues<double> { 6, 7, 3, 4 ,6 },
+                    PointGeometry = null
+                },
+
+            };
+            */
+        }
     }
 }
 

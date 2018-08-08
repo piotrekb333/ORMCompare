@@ -9,10 +9,10 @@ namespace ORMCompare.ApplicationModels
     public class DataGridResultModel
     {
         public Guid GuidId { get; set; }
-        public long ADO { get; set; }
-        public long EntityFramework { get; set; }
-        public long Drapper { get; set; }
-        public long PetaPoco { get; set; }
+        public double ADO { get; set; }
+        public double EntityFramework { get; set; }
+        public double Drapper { get; set; }
+        public double PetaPoco { get; set; }
         
         public DataGridResultModel()
         {

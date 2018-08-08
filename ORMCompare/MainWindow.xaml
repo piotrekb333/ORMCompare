@@ -115,6 +115,7 @@
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="2*"/>
@@ -128,10 +129,12 @@
 
                     <Button Grid.Column="1"  Grid.Row="2" Content="GENERATE CHART" Name="BtnChart" Click="BtnChart_Click" />
                     <Button Grid.Column="0"  Grid.Row="2" Content="CONVERT TO CSV" Name="BtnConvertTable" Click="BtnConvertTable_Click" />
-                    <Label Grid.Column="0"  Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" Content="Tests Results (Time in milliseconds)"/>
+                    <Button Grid.Column="0"  Grid.Row="3" Content="GENERATE CHART DOUBLE" Name="BtnChartDouble" Click="BtnChartDouble_Click"  />
+
+                    <Label Grid.Column="0"  Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" Content="Tests Results (Time in milliseconds)"/>
 
                     <DataGrid Name="DGTestResult"
-                        Grid.Row="4"
+                        Grid.Row="5"
                               Grid.ColumnSpan="2"
                               Grid.RowSpan="3" 
                               ColumnWidth="*"
