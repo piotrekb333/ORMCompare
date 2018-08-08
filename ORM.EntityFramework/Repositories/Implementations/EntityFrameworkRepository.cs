@@ -40,7 +40,10 @@ namespace ORM.EntityFramework.Repositories.Implementations
         {
             var first=context.DepartmentEmployees.FirstOrDefault();
             if (first != null)
+            {
                 context.DepartmentEmployees.Remove(first);
+                context.SaveChanges();
+            }
             return true;
         }
 
