@@ -454,6 +454,8 @@ namespace ORMCompare
             //CheckDatabase();
         }
 
+
+
         private void BtnTestConnection_Click(object sender, RoutedEventArgs e)
         {
             if (databaseManagment.CheckDatabase())
