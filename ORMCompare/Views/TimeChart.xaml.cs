@@ -52,11 +52,16 @@ namespace ORMCompare.Views
             var SeriesCollection = new SeriesCollection();
             var numTest=model.EntityFramework.Count;
             string[] tests= new string[numTest];
-            for(int i = 0; i < numTest; i++)
+            if (model.NumRecord == null || model.NumRecord.Count == 0)
             {
-                int v = i+1;
-                tests[i] = "Test " + v.ToString();
+                for (int i = 0; i < numTest; i++)
+                {
+                    int v = i + 1;
+                    tests[i] = "Test " + v.ToString();
+                }
             }
+            else
+                tests = model.NumRecord.ToArray();
 
             ChartValues<long> entityVal = new ChartValues<long>();
             ChartValues<long> adoVal = new ChartValues<long>();
@@ -144,11 +149,16 @@ namespace ORMCompare.Views
             var SeriesCollection = new SeriesCollection();
             var numTest = model.EntityFramework.Count;
             string[] tests = new string[numTest];
-            for (int i = 0; i < numTest; i++)
+            if (model.NumRecord == null || model.NumRecord.Count == 0)
             {
-                int v = i + 1;
-                tests[i] = "Test " + v.ToString();
+                for (int i = 0; i < numTest; i++)
+                {
+                    int v = i + 1;
+                    tests[i] = "Test " + v.ToString();
+                }
             }
+            else
+                tests = model.NumRecord.ToArray();
 
             ChartValues<double> entityVal = new ChartValues<double>();
             ChartValues<double> adoVal = new ChartValues<double>();
@@ -206,7 +216,7 @@ namespace ORMCompare.Views
             axis.Labels = tests.ToList();
             axis.MinRange = 0;
             axis.FontSize = 15;
-
+            axis.Title = "Liczba rekordów";
             Axis axisy = new Axis();
             axisy.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
             axisy.FontSize = 15;

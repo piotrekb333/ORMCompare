@@ -38,8 +38,10 @@ namespace ORMCompare
         public ObservableCollection<DataGridResultModel> dataGridList;
         TestService testService;
         IManageDatabaseRepository databaseManagment;
+        List<string> records;
         public MainWindow()
         {
+            records = new List<string>();
             InitializeComponent();
             LoadDatabaseSettings();
             databaseManagment = new ManageDatabaseRepository(new ORMContext());
@@ -415,6 +417,7 @@ namespace ORMCompare
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             dataGridList.Clear();
+            records.Clear();
         }
 
         private void BtnConvertTable_Click(object sender, RoutedEventArgs e)
@@ -475,7 +478,7 @@ namespace ORMCompare
                 List<double> entity = new List<double>();
                 List<double> petapoco = new List<double>();
                 List<double> drapper = new List<double>();
-
+                
                 foreach (var item in dataGridList)
                 {
                     ado.Add(item.ADO);
@@ -487,9 +490,32 @@ namespace ORMCompare
                 model.EntityFramework = entity;
                 model.PetaPoco = petapoco;
                 model.Drapper = drapper;
+                model.NumRecord = records;
                 TimeChart chart = new TimeChart(model);
                 chart.ShowDialog();
             }
+        }
+
+        private void BtnChartInsertData_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnInsert_Click(object sender, RoutedEventArgs e)
+        {
+            if (DGTestResult.ItemsSource == null)
+            {
+                DGTestResult.ItemsSource = dataGridList;
+            }
+            dataGridList.Add(new DataGridResultModel
+            {
+                ADO = double.Parse(txtAdo.Text),
+                Drapper = double.Parse(txtAdo.Text),
+                PetaPoco = double.Parse(txtAdo.Text),
+                EntityFramework = double.Parse(txtAdo.Text),
+                GuidId = Guid.NewGuid()
+            });
+            records.Add(txtRecord.Text);
         }
     }
 }

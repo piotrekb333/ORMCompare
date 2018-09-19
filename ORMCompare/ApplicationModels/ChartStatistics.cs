@@ -12,5 +12,6 @@ namespace ORMCompare.ApplicationModels
         public List<long> EntityFramework { get; set; }
         public List<long> Drapper { get; set; }
         public List<long> PetaPoco { get; set; }
+        public List<string> NumRecord { get; set; }
     }
 }

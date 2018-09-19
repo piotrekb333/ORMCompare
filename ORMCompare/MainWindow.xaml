@@ -116,6 +116,7 @@
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="2*"/>
@@ -130,11 +131,34 @@
                     <Button Grid.Column="1"  Grid.Row="2" Content="GENERATE CHART" Name="BtnChart" Click="BtnChart_Click" />
                     <Button Grid.Column="0"  Grid.Row="2" Content="CONVERT TO CSV" Name="BtnConvertTable" Click="BtnConvertTable_Click" />
                     <Button Grid.Column="0"  Grid.Row="3" Content="GENERATE CHART DOUBLE" Name="BtnChartDouble" Click="BtnChartDouble_Click"  />
+                    <Button Grid.Column="1"  Grid.Row="3" Content="GENERATE CHART INSERT DATA" Name="BtnChartInsertData" Click="BtnChartInsertData_Click"  />
 
-                    <Label Grid.Column="0"  Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" Content="Tests Results (Time in milliseconds)"/>
+
+                    <Grid Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBox Grid.Row="0" Grid.Column="0" Name="txtAdo"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Name="txtEntity"/>
+                        <TextBox Grid.Row="0" Grid.Column="2" Name="txtDrapper"/>
+                        <TextBox Grid.Row="0" Grid.Column="3" Name="txtPetaPoco"/>
+                        <TextBox Grid.Row="0" Grid.Column="4" Name="txtRecord"/>
+                        <Button Grid.Column="5"  Grid.Row="0" Content="insert" Name="btnInsert" Click="btnInsert_Click" />
+
+                    </Grid>
+
+                    <Label Grid.Column="0"  Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" Content="Tests Results (Time in milliseconds)"/>
 
                     <DataGrid Name="DGTestResult"
-                        Grid.Row="5"
+                        Grid.Row="6"
                               Grid.ColumnSpan="2"
                               Grid.RowSpan="3" 
                               ColumnWidth="*"
